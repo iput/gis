@@ -4,12 +4,13 @@
 	<title>Landing Page Sistem informasi Lalu Lintas</title>
 	<meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="<?=base_url('plugins/dist/img/icon.png')?>" type="image/gif">
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('plugins/bootstrap/css/bootstrap.min.css') ?>">
   <script type="text/javascript" src="<?php echo base_url('plugins/jQuery/jquery-2.2.3.min.js') ?>"></script>
   <script type="text/javascript" src="<?php echo base_url('plugins/jQueryUI/jquery-ui.min.js') ?>"></script>
   <script type="text/javascript" src="<?php echo base_url('plugins/bootstrap/js/bootstrap.min.js') ?>"></script>
 </head>
-<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60" class="bg-success">
 <nav class="navbar navbar-inverse">
 <div class="jumbotron" style="    background: url('<?php echo base_url('/plugins/dist/img/background.png') ?>') fixed no-repeat;
     background-size: cover;
@@ -35,7 +36,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-globe"></span>&nbsp;Lokasiku</a>
+      <a class="navbar-brand" href="<?php echo base_url('landing') ?>"><span class="glyphicon glyphicon-globe"></span>&nbsp;Lokasiku</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -49,8 +50,9 @@
 		    </div><!-- /input-group -->
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Info Kemacetan</a></li>
-        <li><a href="#">Alternatif</a></li>
+        <li><a href="<?php echo base_url('landing') ?>">Beranda</a></li>
+        <li><a href="<?php echo base_url('user/informasi') ?>">Info Kemacetan</a></li>
+        <li><a href="<?php echo base_url('user/alternatif') ?>">Alternatif</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Opsi <span class="caret"></span></a>
           <ul class="dropdown-menu">
