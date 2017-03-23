@@ -1,5 +1,5 @@
 <div class="container">
-	<h2>Peta Lalilintas kota malang</h2>
+	<h2>Peta Lalulintas kota malang</h2>
 </div>
 <div id="googleMap" style="height:500px;width:100%;" class="bg-grey"></div>
 <script>
