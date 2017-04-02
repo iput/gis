@@ -12,6 +12,8 @@
 
  	public function index()
  	{
+ 		$this->load->view('attribute/adm_header');
  		$this->load->view('admin/blank');
+ 		$this->load->view('attribute/adm_footer');
  	}
  } ?>
