@@ -9,7 +9,7 @@
         </div>
         <div class="box-body">
 
-        <div class="alert-success" style="display: none;"></div>
+        <div class="alert alert-success" style="display: none;"></div>
 
           <a href="<?php echo base_url('admin/c_jalan/add_jalan') ?>" class="btn btn-default btn-flat"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;Tambah Data Jalan</a>
 
@@ -21,10 +21,23 @@
                   <td>Nama Jalan</td>
                   <td>Longitude</td>
                   <td>Latitude</td>
-                  <td>Kondisi Keramaian</td>
                   <td>Aksi</td>
                 </tr>
               </thead>
+              <tbody>
+              <?php foreach ($data_jalan as $row): ?>
+                <tr>
+                    <td><?php echo $row['id_jalan'] ?></td>
+                    <td><?php echo $row['nama_jalan'] ?></td>
+                    <td><?php echo $row['longitude'] ?></td>
+                    <td><?php echo $row['latitude'] ?></td>
+                    <td>
+                      <a href="#" class="btn btn-info btn-flat"><span class="fa fa-pencil"></span></a>
+                      <a href="javascript:;" class="btn btn-danger btn-flat"><span class="fa fa-remove"></span></a>
+                    </td>
+                </tr>
+                <?php endforeach ?>
+              </tbody>
             </table>
           </div>
         </div>

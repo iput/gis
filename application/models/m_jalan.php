@@ -10,7 +10,7 @@
  		parent::__construct();
  	}
 
- 	public function getAllStreets()
+ 	public function getAllJalan()
  	{
  		$data = $this->db->query("SELECT * FROM jalan");
  		return $data->result_array();

@@ -13,8 +13,9 @@
 
  	public function index()
  	{
+ 		$data = $this->m_jalan->getAllJalan();
  		$this->load->view('attribute/adm_header');
- 		$this->load->view('admin/v_jalan');
+ 		$this->load->view('admin/v_jalan', array('data_jalan'=>$data));
  		$this->load->view('attribute/adm_footer');
  	}
 
@@ -34,26 +35,12 @@
  			$this->session->set_flashdata('pesan_gagal', 'Ada kesalahan pada '.validation_errors());
  			return false;
  		}else{
- 			$filename ="img_".time();
- 			$config['upload_path'] ='./upload_file/';
- 			$config['allowed_types'] ='jpg|bmp|png';
- 			$config['max_size'] ='2000';
- 			$config['max_width'] ='2000';
- 			$config['max_height'] ='2000';
- 			$config['file_name'] = $filename;
-
- 			$this->load->library('upload',$config);
-
- 			if (!$this->upload->do_upload('userfile')) {
- 				$error = $this->upload->display_errors();
- 				$this->session->set_flashdata('pesan_gagal', 'terjadi kesalahan pada'.$error);
- 			}else{
- 				$image = $this->upload->data();
+ 				// $image = $this->upload->data();
  				$data = array(
  					"nama_jalan"=>$this->input->post('txtNamaJalan'),
  					"longitude"=>$this->input->post('txtLong'),
- 					"latitude"=> $this->input->post('txtLat'),
- 					"foto_jalan"=> $image['file_name']);
+ 					"latitude"=> $this->input->post('txtLat')
+ 					);
  				
  				$this->m_jalan->insertJalan('jalan', $data);
 
@@ -62,5 +49,5 @@
  				redirect('admin/c_jalan/index');
  			}
  		}
- 	}
+ 	
  } ?>
