@@ -1,6 +1,3 @@
-<style type="text/css">
-   #peta { height: 300px; width: 100%; margin-top: 1px}
- </style>
 <div class="content-wrapper">
 	<section class="content">
 	<div class="box">
@@ -54,7 +51,7 @@
 <script type="text/javascript">
 	function myMap() {
 		var map = new google.maps.Map(document.getElementById('peta'),{
-			center : new google.maps.LatLng(-7.9666204,112.6326321),
+			center : new google.maps.LatLng(-7.9531699,112.59855563),
 			zoom : 15
 		});
 		marker = new google.maps.Marker({
@@ -78,5 +75,3 @@
 		});
 	}
 </script>
-</footer>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJ1XPieE32_RzapVtgPa8KXDU9qeilbTE&callback=myMap"async defer></script>

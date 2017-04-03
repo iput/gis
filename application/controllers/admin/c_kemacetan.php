@@ -16,4 +16,11 @@
  		$this->load->view('admin/v_kemacetan');
  		$this->load->view('attribute/adm_footer');
  	}
+
+ 	public function add_kemacetan()
+ 	{
+ 		$this->load->view('attribute/adm_header');
+ 		$this->load->view('admin/add_kemacetan');
+ 		$this->load->view('attribute/adm_footer');	
+ 	}
  } ?>

@@ -1,3 +1,4 @@
+
 <footer class="main-footer">
     <div class="pull-right hidden-xs">
       <b>Version</b> 2.3.6
@@ -10,5 +11,6 @@
   <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJ1XPieE32_RzapVtgPa8KXDU9qeilbTE&callback=myMap"async defer></script>
 </body>
 </html>

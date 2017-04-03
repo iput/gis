@@ -1,0 +1,97 @@
+<div class="content-wrapper">
+<section class="content">
+<div class="box">
+		<div class="box-header with-border">
+	<h3 class="box-title"> Tambah data Jalan</h3>
+</div>
+<div class ="box-body">
+	<form class="form-horizontal" method="POST" action="">
+		<div class="form-group">
+			<label class ="control-label col-md-3">Nama Jalan</label>
+			<div class="col-md-8">
+				<select class="form-control" name="cb_nama_jalan">
+					<option value="">Pilih Jalan titik kemacetan</option>
+				</select>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-md-3">Cara Tempuh</label>
+			<div class="col-md-8">
+				<select class="form-control" name="cb_metode">
+					<option value="">Pilih metode tempuh altenatif</option>
+					<option value="1">Jalan Kaki</option>
+					<option value="2">bersepeda</option>
+					<option value="3">Sepeda motor</option>
+					<option value="4">Mobil</option>
+				</select>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-md-3">Nama Alternatif</label>
+			<div class="col-md-8">
+				<input type="text" name="txtAlter" class="form-control" id="nama_alter">
+			</div>
+		</div>
+		<div class="form-group">
+		<label class="control-label col-md-3"> Longitude</label>
+		<div class="col-md-8">
+			<input type="text" name="txtLong" class="form-control" placeholder="Longitude" id="long" readonly>
+		</div>
+		</div>
+		<div class="form-group">
+		<label class="control-label col-md-3">Latitude</label>
+		<div class="col-md-8">
+			<input type="text" name="txtLat" class="form-control" placeholder="Latitude" id="lat" readonly>
+		</div>
+		</div>
+		<div class ="form-group">
+		<label class="control-label col-md-3"></label>
+		<div class="col-md-8">
+		<div id="peta"></div>
+		</div>
+		</div>
+		<div class="form-group">
+		<label class="control-label col-md-3">Foto Alternatif</label>
+		<div class="col-md-8">
+			<input type="file" name="foto_alter" class="form-control">
+		</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-md-3"></label>
+			<div class="col-md-8">
+				<a href="<?php echo base_url('admin/c_alter') ?>" class="btn btn-danger btn-flat">Batal</a>
+				<button type="submit" class="btn btn-success btn-flat">Simpan</button>
+			</div>
+		</div>
+	</form>
+</div>
+</div>
+</section>	
+</div>
+<script type="text/javascript">
+	function myMap() {
+		var map = new google.maps.Map(document.getElementById('peta'),{
+			center : new google.maps.latLng(-7.9531699,112.59855563),
+			zoom : 15
+		});
+		marker = new google.maps.Marker({
+			position : map.getCenter(),
+			map : map,
+			title : 'geser untuk memilih lokasi jalan',
+			draggable : true,
+			flat : false
+		});
+		google.maps.event.addListener(marker, 'dragend', function(){
+			latlng = marker.getPosition();
+			url = 'https://maps.googleapis.com/maps/api/geocode/json?latlng='+latlng.lat()+','+latlng.lng()+'&sensor=false';
+			$.get(url, function(data){
+				if (data.status=='OK') {
+					map.setCenter(data.results[0].geometry.location);
+					$('#nama_alter').val(data.results[0].formatted_address);
+					$('#long').val(data.results[0].geometry.location.lng);
+					$('#lat').val(data.results[0].geometry.location.lat);
+				}
+			});
+		});
+	}
+</script>
