@@ -1,10 +1,5 @@
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-
-    </section>
-
     <!-- Main content -->
     <section class="content">
     <div class="row">
@@ -28,6 +23,30 @@
           </div>
           <div class="icon">
             <i class="fa fa-menus"></i>
+          </div>
+          <a href="#" class="small-box-footer">Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-xs-6">
+        <div class="small-box bg-aqua">
+          <div class="inner">
+            <h2>Kemacetan</h2>
+            <p>Seputar kemacetan</p>
+          </div>
+          <div class="icon">
+            <i class="fa fa-menus"></i>
+          </div>
+          <a href="#" class="small-box-footer">Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div>
+      <div class="col-xs-6 col-lg-3">
+        <div class="small-box bg-aqua">
+          <div class="inner">
+            <h2>Alternatif</h2>
+            <p>Alternatif tujuan anda</p>
+          </div>
+          <div class="icon">
+            <i class="fa fa-chart"></i>
           </div>
           <a href="#" class="small-box-footer">Selengkapnya <i class="fa fa-arrow-circle-right"></i></a>
         </div>

@@ -19,6 +19,19 @@
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="<?php echo base_url()?>plugins/dist/css/skins/_all-skins.min.css">
 
+<!-- jQuery 2.2.3 -->
+<script type="text/javascript" src="<?php echo base_url()?>plugins/jQuery/jquery-2.2.3.min.js"></script>
+<!-- Bootstrap 3.3.6 -->
+<script type="text/javascript" src="<?php echo base_url()?>plugins/bootstrap/js/bootstrap.min.js"></script>
+<!-- SlimScroll -->
+<script type="text/javascript" src="<?php echo base_url()?>plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script type="text/javascript" src="<?php echo base_url()?>plugins/fastclick/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script type="text/javascript" src="<?php echo base_url()?>plugins/dist/js/app.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script type="text/javascript" src="<?php echo base_url()?>plugins/dist/js/demo.js"></script>
+
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -124,27 +137,23 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?php echo base_url()?>index.html"><i class="fa fa-circle-o"></i> Peta</a></li>
-            <li><a href="<?php echo base_url()?>index2.html"><i class="fa fa-circle-o"></i> Berita</a></li>
+            <li><a href="<?php echo base_url()?>"><i class="fa fa-circle-o"></i> Peta</a></li>
+            <li><a href="<?php echo base_url()?>"><i class="fa fa-circle-o"></i> Berita</a></li>
           </ul>
         </li>
-        <li>
+        <li class="treeview">
           <a href="#">
             <i class="fa fa-map-o"></i>
-            <span>Data Lokasi Kemacetan</span>
+            <span>Lokasi</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
             </span>
           </a>
-        </li>
-        <li>
-          <a href="#">
-            <i class="fa fa-map-marker"></i>
-            <span>Inventarisasi Jalan</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-right pull-right"></i>
-            </span>            
-          </a>
+          <ul class="treeview-menu">
+            <li><a href="<?php echo base_url('admin/c_jalan') ?>" class="fa fa-circle-o">&nbsp;Jalan</a></li>
+            <li><a href="<?php echo base_url('admin/c_kemacetan') ?>" class="fa fa-circle-o">&nbsp;Kemacetan</a></li>
+            <li><a href="#" class="fa fa-circle-o">&nbsp;Alternatif</a></li>
+          </ul>
         </li>
         <li>
           <a href="#">
@@ -163,7 +172,6 @@
             </span>            
           </a>
         </li>
-        <li><a href="#"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
       </ul>
     </section>
     <!-- /.sidebar -->
