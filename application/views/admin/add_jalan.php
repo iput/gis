@@ -5,7 +5,9 @@
 			<h3 class="box-title">Tambah data Jalan</h3>
 		</div>
 		<div class="box-body">
-			<form class="form-horizontal" method="POST" action="">
+			<?php $dataForm = array('class'=>'form-horizontal',);
+			echo form_open_multipart('admin/C_jalan/insert_jalan', $dataForm);
+			 ?>
 			<div class="form-group">
 				<label class="control-label col-md-3">Nama Jalan</label>
 				<div class="col-md-8">
@@ -33,7 +35,7 @@
             <div class="form-group">
             	<label class="control-label col-md-3">Kondisi Keramaian</label>
             	<div class="col-md-8">
-            		<input type="file" name="fotoJalan" class="form-control">
+            		<input type="file" name="userfile" class="form-control">
             	</div>
             </div>
             <div class="form-group">

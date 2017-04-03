@@ -8,6 +8,9 @@
           <h3 class="box-title">Aset Jalan Potensi Macet</h3>
         </div>
         <div class="box-body">
+
+        <div class="alert-success" style="display: none;"></div>
+
           <a href="<?php echo base_url('admin/c_jalan/add_jalan') ?>" class="btn btn-default btn-flat"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;Tambah Data Jalan</a>
 
           <div class="table table-responsive" style="margin-top: 20px;">
@@ -37,3 +40,8 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+<script type="text/javascript">
+    <?php if ($this->session->flashdata('pesan_sukses')): ?>
+    $('.alert-success').html('<?php echo $this->session->flashdata('pesan_sukses') ?>').fadeIn().delay(4000).fadeOut('slow');
+  <?php endif ?>
+</script>
