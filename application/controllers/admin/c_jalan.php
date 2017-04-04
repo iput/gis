@@ -35,12 +35,26 @@
  			$this->session->set_flashdata('pesan_gagal', 'Ada kesalahan pada '.validation_errors());
  			return false;
  		}else{
- 				// $image = $this->upload->data();
+ 			$filename ="webgis_".time();
+ 			$config['upload_path'] ='./upload_file/';
+ 			$config['allowed_types'] ='jpg|bmp|png';
+ 			$config['max_size'] ='2000';
+ 			$config['max_width'] ='2000';
+ 			$config['max_height'] ='2000';
+ 			$config['file_name'] = $filename;
+
+ 			$this->load->library('upload',$config);
+
+ 			if (!$this->upload->do_upload('userfile')) {
+ 				$error = $this->upload->display_errors();
+ 				$this->session->set_flashdata('pesan_gagal', 'terjadi kesalahan pada'.$error);
+ 			}else{
+ 				$image = $this->upload->data();
  				$data = array(
  					"nama_jalan"=>$this->input->post('txtNamaJalan'),
  					"longitude"=>$this->input->post('txtLong'),
- 					"latitude"=> $this->input->post('txtLat')
- 					);
+ 					"latitude"=> $this->input->post('txtLat'),
+ 					"foto_jalan"=> $image['file_name']);
  				
  				$this->m_jalan->insertJalan('jalan', $data);
 
@@ -49,5 +63,5 @@
  				redirect('admin/c_jalan/index');
  			}
  		}
- 	
+ 	}
  } ?>
