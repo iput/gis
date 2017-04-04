@@ -7,7 +7,7 @@
 		</div>
 		<div class="box-body">
 		<a href=#></a>
-		<div class="table table-responsife" style="margin-top: 20px;">
+		<div class="table table-responsive" style="margin-top: 20px;">
 			<table class="table table-responsive table-bordered table-striped table-hover" id="1">
 				<thead>
 				<tr>
