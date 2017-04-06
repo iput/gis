@@ -26,8 +26,13 @@ CREATE TABLE `alternatif` (
   `lokasi_jalan` text,
   `lang` float DEFAULT NULL,
   `lot` float DEFAULT NULL,
+  `alter_tempuh` varchar(100) DEFAULT NULL,
+  `waktu_alter` varchar(10) DEFAULT NULL,
   `foto_alter` text,
-  PRIMARY KEY (`id_alter`)
+  `id_jalan` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_alter`),
+  KEY `alter` (`id_jalan`),
+  CONSTRAINT `alter` FOREIGN KEY (`id_jalan`) REFERENCES `jalan` (`id_jalan`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 /*Data for the table `alternatif` */
@@ -61,13 +66,12 @@ CREATE TABLE `jalan` (
   `longitude` varchar(100) DEFAULT NULL,
   `latitude` varchar(100) DEFAULT NULL,
   `foto_jalan` text,
-  `id_alter` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_jalan`),
-  KEY `alter` (`id_alter`),
-  CONSTRAINT `alter` FOREIGN KEY (`id_alter`) REFERENCES `alternatif` (`id_alter`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  PRIMARY KEY (`id_jalan`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 /*Data for the table `jalan` */
+
+insert  into `jalan`(`id_jalan`,`nama_jalan`,`longitude`,`latitude`,`foto_jalan`) values (1,'Jl. Raya Candi V No.303, Karangbesuki, Sukun, Kota Malang, Jawa Timur 65151, Indonesia','112.597826','-7.955513000000001',NULL),(2,'Jl. Raya Candi VI C No.315, Karangbesuki, Sukun, Kota Malang, Jawa Timur 65149, Indonesia','112.5985563','-7.953169900000001',NULL),(3,'Jl. Raya Candi VI C No.315, Karangbesuki, Sukun, Kota Malang, Jawa Timur 65149, Indonesia','112.5985563','-7.953169900000001',NULL),(4,'Jl. Raya Candi VI C No.315, Karangbesuki, Sukun, Kota Malang, Jawa Timur 65149, Indonesia','112.5985563','-7.953169900000001',NULL),(5,'Jl. Sunan Kalijaga Dalam No.22, Dinoyo, Kec. Lowokwaru, Kota Malang, Jawa Timur 65149, Indonesia','112.6045695','-7.950148899999999',NULL);
 
 /*Table structure for table `kemacetan` */
 

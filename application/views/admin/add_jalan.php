@@ -33,9 +33,9 @@
                </div>
             </div>
             <div class="form-group">
-            	<label class="control-label col-md-3">Kondisi Keramaian</label>
+            	<label class="control-label col-md-3">Foto Keramaian</label>
             	<div class="col-md-8">
-            		<input type="file" name="userfile" class="form-control" multiple size="40">
+            		<input type="file" name="userfile" class="form-control" multiple size="50">
             	</div>
             </div>
             <div class="form-group">
@@ -77,3 +77,4 @@
 		});
 	}
 </script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJ1XPieE32_RzapVtgPa8KXDU9qeilbTE&callback=myMap"async defer></script>

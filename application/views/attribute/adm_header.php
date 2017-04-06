@@ -48,7 +48,7 @@
 
   <header class="main-header">
     <!-- Logo -->
-    <a href="<?php echo base_url()?>index2.html" class="logo">
+    <a href="<?php echo base_url('admin/admin')?>" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>W</b>GIS</span>
       <!-- logo for regular state and mobile devices -->
@@ -140,8 +140,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="<?php echo base_url()?>"><i class="fa fa-circle-o"></i> Peta</a></li>
-            <li><a href="<?php echo base_url()?>"><i class="fa fa-circle-o"></i> Berita</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Peta</a></li>
+            <li><a href="#"><i class="fa fa-circle-o"></i> Berita</a></li>
           </ul>
         </li>
         <li class="treeview">

@@ -46,17 +46,17 @@
  			$this->load->library('upload',$config);
 
  			if (!$this->upload->do_upload('userfile')) {
- 				$error = $this->upload->display_errors();
- 				$this->session->set_flashdata('pesan_gagal', 'terjadi kesalahan pada'.$error);
+ 				$dataerror = $this->upload->display_errors();
+ 				$this->session->set_flashdata('pesan_gagal', 'terjadi kesalahan pada'.$dataerror);
  			}else{
  				$image = $this->upload->data();
- 				$data = array(
+ 				$datain = array(
  					"nama_jalan"=>$this->input->post('txtNamaJalan'),
  					"longitude"=>$this->input->post('txtLong'),
  					"latitude"=> $this->input->post('txtLat'),
  					"foto_jalan"=> $image['file_name']);
  				
- 				$this->m_jalan->insertJalan('jalan', $data);
+ 				$this->m_jalan->insertJalan('jalan', $datain);
 
  				$this->session->set_flashdata('pesan_sukses','data berhasil ditambahkan');
  				
