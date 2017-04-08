@@ -8,8 +8,8 @@
           <h3 class="box-title">Aset Jalan Potensi Macet</h3>
         </div>
         <div class="box-body">
-
         <div class="alert alert-success" style="display: none;"></div>
+        <?= validation_errors()?>
 
           <a href="<?php echo base_url('admin/c_jalan/add_jalan') ?>" class="btn btn-default btn-flat"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;Tambah Data Jalan</a>
 

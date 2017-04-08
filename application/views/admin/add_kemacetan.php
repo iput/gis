@@ -4,61 +4,65 @@
 			<div class="box-header with-border">
 				<h3 class="box-title">Tambahkan Lokasi Kemacaten</h3>
 			</div>
+
 			<div class="box-body">
-			<form class="form-horizontal" method="POST" action="">
+			<form class="form-horizontal" method="POST" action="<?php echo base_url('admin/c_kemacetan/tambahKemacetan') ?>">
 			<div class="form-group">
-				<label class="control-label col-md-3">Nama Jalan</label>
-				<div class="col-md-8">
+				<label class="control-label col-md-2">Nama Jalan</label>
+				<div class="col-md-9">
 					<select class="form-control" name="cb_jalan">
 						<option value="">Pilih jalan</option>
+						<?php foreach ($jalan as $row): ?>
+							<option value="<?php echo $row['id_jalan'] ?>"><?php echo $row['nama_jalan'] ?></option>
+						<?php endforeach ?>
 					</select>
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-md-3">Waktu kemacetan</label>
-				<div class="col-md-8">
+				<label class="control-label col-md-2">Waktu kemacetan</label>
+				<div class="col-md-9">
 					<input type="text" name="txtJam" class="form-control" placeholder="waktu setempat">
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-md-3">Tingkat Kemacetan</label>
-				<div class="col-md-8">
-					<select class="form-control" class="cb_level">
+				<label class="control-label col-md-2">Tingkat Kemacetan</label>
+				<div class="col-md-9">
+					<select class="form-control" name="cb_level">
 						<option value="">Pilih Tingkat Kemacetan</option>
-						<option value="0">Jalan Raya lancar</option>
-						<option value="1">Kemacetan Sedang</option>
-						<option value="2">Kemacetan Parah</option>
+						<option value="normal">Normal</option>
+						<option value="medium">Sedang</option>
+						<option value="hard">Parah</option>
 					</select>
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-md-3">Titik Kemacetan</label>
-				<div class="col-md-8">
+				<label class="control-label col-md-2">Titik Kemacetan</label>
+				<div class="col-md-9">
 					<input type="text" name="txtTitikMacet" class="form-control
 					" id="titik_macet">
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-md-3">Longitude</label>
-				<div class="col-md-8">
-					<input type="text" name="txtlng" class="form-control" id="lng" disabled>
+				<label class="control-label col-md-2">Longitude</label>
+				<div class="col-md-9">
+					<input type="text" name="txtLng" class="form-control" id="lng" disabled>
 				</div>
 			</div>
 			<div class="form-group">
-				<label class="control-label col-md-3">Latitude</label>
-				<div class="col-md-8">
-					<input type="text" name="txtlat" class="form-control" id="lat" disabled>
+				<label class="control-label col-md-2">Latitude</label>
+				<div class="col-md-9">
+					<input type="text" name="txtLat" class="form-control" id="lat" disabled>
 				</div>
 			</div>
 			<div class="form-group">
-				<div class="col-md-3"></div>
-				<div class="col-md-8">
+				<div class="col-md-2"></div>
+				<div class="col-md-9">
 					<div id="peta"></div>
 				</div>
 			</div>
 			<div class="form-group">
-				<div class="col-md-3"></div>
-				<div class="col-md-8">
+				<div class="col-md-2"></div>
+				<div class="col-md-9">
 					<a href="<?php echo base_url('admin/c_kemacetan') ?>" class="btn btn-danger btn-flat">batal</a>
 					<button type="submit" class="btn btn-success btn-flat">Simpan</button>
 				</div>

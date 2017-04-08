@@ -18,7 +18,7 @@
 
  	public function insertBerita($data)
  	{
- 		$result =  $this->db->insert("berita", $data);
- 		return $result;
+ 		$datain =  $this->db->insert("berita", $data);
+ 		return $datain;
  	}
  } ?>
