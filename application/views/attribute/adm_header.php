@@ -159,7 +159,7 @@
           </ul>
         </li>
         <li>
-          <a href="#">
+          <a href="<?php echo base_url('admin/c_berita') ?>">
             <i class="fa fa-laptop"></i>
             <span>Berita</span>
             <span class="pull-right-container">

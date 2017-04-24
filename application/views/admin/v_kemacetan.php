@@ -22,9 +22,19 @@
 							</tr>
 						</thead>
 						<tbody>
+						<?php foreach ($macet as $rows): ?>
 							<tr>
-								
+								<td><?= $rows['id_kemacetan'];?></td>
+								<td><?= $rows['nama_jalan'];?></td>
+								<td><?= $rows['jam_kemacetan'];?></td>
+								<td><?= $rows['tingkat_kemacetan'];?></td>
+								<td><?= $rows['titik_kemacetan'];?></td>
+								<td>
+									<a href="<?php echo base_url('admin/c_kemacetan/edit/'.$rows['id_kemacetan']) ?>" class="btn btn-info btn-flat"><span class="glyphicon glyphicon-pencil"></span></a>
+									<a href="<?php echo base_url('admin/c_kemacetan/delete/'.$rows['id_kemacetan']) ?>" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></a>
+								</td>
 							</tr>
+						<?php endforeach ?>
 						</tbody>
 					</table>
 				</div>

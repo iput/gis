@@ -5,7 +5,7 @@
 				<h3 class="box-title">Data Informasi Berita terUpdate</h3>
 			</div>
 			<div class="box-body">
-				<form class="form-horizontal" method="POST" action="<?php echo base_url('admin/c_berita/AddberitaBaru') ?>">
+				<form class="form-horizontal" method="POST" action="<?php echo base_url('admin/c_berita/TambahBerita') ?>">
 				 <div class="form-group">
 				 	<label class="control-label col-md-2">Judul Berita</label>
 				 	<div class="col-md-8">

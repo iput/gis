@@ -14,8 +14,9 @@
 
  	public function index()
  	{
+ 		$datain = $this->macet->getAllMacet();
  		$this->load->view('attribute/adm_header');
- 		$this->load->view('admin/v_kemacetan');
+ 		$this->load->view('admin/v_kemacetan',array('macet'=>$datain));
  		$this->load->view('attribute/adm_footer');
  	}
 
@@ -40,14 +41,17 @@
  				"jam_kemacetan"=>$this->input->post('txtJam'),
  				"tingkat_kemacetan"=>$this->input->post('cb_level'),
  				"titik_kemacetan"=>$this->input->post('txtTitikMacet'),
- 				"lng"=>$this->input->post('txtLng'),
- 				"lat"=>$this->input->post('txLat'),
+ 				"lat"=>$this->input->post('txtLat'),
+ 				"lng"=>$this->input->post('txtLong'),
  				"id_jalan"=>$this->input->post('cb_jalan'));
 
- 			$hasil = $this->macet->insertMacet($dataK);
- 			if ($hasil) {
- 				$this->session->set_flashdata('sukses','data berhasil disimpan');
- 				redirect('admin/C_kemacetan');
+ 			$result = $this->macet->insertMacet($dataK);
+
+ 			if ($result) {
+ 				$this->session->set_flashdata('sukses','Data Berhasil Disimpan');
+ 				redirect('admin/c_kemacetan');
+ 			}else{
+ 				redirect('admin/c_kemacetan/add_kemacetan');
  			}
  		}
 

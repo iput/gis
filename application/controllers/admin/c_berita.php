@@ -14,8 +14,9 @@
 
  	public function index()
  	{
+ 		$data = $this->m_berita->getAllBerita();
  		$this->load->view('attribute/adm_header');
- 		$this->load->view('admin/v_berita');
+ 		$this->load->view('admin/v_berita', array('berita'=>$data));
  		$this->load->view('attribute/adm_footer');
  	}
 
@@ -28,29 +29,25 @@
 
  	public function TambahBerita()
  	{
- 		$config['upload_path'] = './gambar/';
-            $config['allowed_types'] = 'bmp|jpg|png|jpeg';
-            $config['max_size'] = '300';
-            $config['max_width'] = '2000';
-            $config['max_height'] = '2000';
-            $this->upload->initialize($config);
-            $this->load->library('upload', $config);
+ 		
+ 		$this->form_validation->set_rules('txtJudulBerita','Judul Berita', 'required');
+ 		$this->form_validation->set_rules('txtKonten','Konten Berita', 'required');
+ 		$this->form_validation->set_rules('txtSumber','Judul Berita', 'required');
 
- 		if (!$this->upload->do_upload('userfile')) {
- 			echo "terjadi kesalahan".$this->upload->display_errors();
+ 		if ($this->form_validation->run()==FALSE) {
+ 			$this->session->set_flashdata('pesan_gagal', 'Ada kesalahan pada '.validation_errors());
  			return false;
  		}else{
- 			echo "berhasil";
- 			$img = $this->upload->data();
  			$dataBerita = array(
  				"judul_berita"=>$this->input->post('txtJudulBerita'),
  				"isi_berita"=>$this->input->post('txtKonten'),
- 				"foto_berita"=>$img,
- 				"waktu_input"=> time(),
- 				"waktu_update"=>time(),
+ 				"foto_berita"=>$this->input->post('txtSumber'),
+ 				"waktu_input"=> date('Y:m:d'),
+ 				"waktu_update"=>date('h:m:s'),
  				"id_user"=>'1');
  			$result = $this->m_berita->insertBerita($dataBerita);
  			if ($result) {
+ 				$this->session->set_flashdata('sukses','Data Berita Berhasil ditambahkan');
  				redirect('admin/c_berita');
  			}
  		}

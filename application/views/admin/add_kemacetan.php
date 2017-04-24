@@ -6,6 +6,7 @@
 			</div>
 
 			<div class="box-body">
+			<?= validation_errors()?>
 			<form class="form-horizontal" method="POST" action="<?php echo base_url('admin/c_kemacetan/tambahKemacetan') ?>">
 			<div class="form-group">
 				<label class="control-label col-md-2">Nama Jalan</label>
@@ -45,13 +46,13 @@
 			<div class="form-group">
 				<label class="control-label col-md-2">Longitude</label>
 				<div class="col-md-9">
-					<input type="text" name="txtLng" class="form-control" id="lng" disabled>
+					<input type="text" name="txtLong" class="form-control" id="lng" readonly>
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-md-2">Latitude</label>
 				<div class="col-md-9">
-					<input type="text" name="txtLat" class="form-control" id="lat" disabled>
+					<input type="text" name="txtLat" class="form-control" id="lat" readonly>
 				</div>
 			</div>
 			<div class="form-group">

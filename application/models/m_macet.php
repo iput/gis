@@ -10,6 +10,18 @@
  		parent::__construct();
  	}
 
+ 	public function getAllMacet()
+ 	{
+ 		$this->db->select('jalan.nama_jalan,kemacetan.id_kemacetan,kemacetan.titik_kemacetan, kemacetan.tingkat_kemacetan, kemacetan.jam_kemacetan,kemacetan.lat, kemacetan.lng');
+ 		$this->db->from('jalan');
+ 		$this->db->join('kemacetan','jalan.id_jalan=kemacetan.id_jalan');
+ 		$dataIn = $this->db->get();
+ 		if ($dataIn->num_rows()>0) {
+ 			return $dataIn->result_array();
+ 		}else{
+ 			return array();
+ 		}
+ 	}
  	public function insertMacet($data)
  	{
  		$dataIn = $this->db->insert('kemacetan', $data);
