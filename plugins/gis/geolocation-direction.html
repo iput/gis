@@ -1,13 +1,16 @@
-		<div class="form-inline">
-			<input class="form-control" type="text" id="dest" style="width:475px;">
-  		<button class="btn btn-primary" type="button" id="cari">Cari Rute</button>
-  		<br><br>
-		</div>
-	    <div id="directions-panel" style="float:right; width:48%; height:600px; overflow:auto;"></div>
-	    <div id="map-canvas" style="width:50%; height:600px;"></div>
-	    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places&language=id"></script>
-  		<script src="<?php echo base_url('plugins/gis/jquery.js') ?>"></script>
-<script>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <title>Rute</title>
+
+    <!-- load library place untuk geocoder autocomplete dan kita set bahasanya ke bahasa indonesia -->
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places&language=id"></script>
+    <script src="jquery.js"></script>
+    <script>
+    
+    
     var dest;
     var directionsDisplay;
 
@@ -18,7 +21,7 @@
     $(document).ready(function() {
         var myOptions = {
             zoom: 4,
-            center: new google.maps.LatLng(-7.950884, 112.608102),
+            center: new google.maps.LatLng(-2.548926,118.0148634),
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
 
@@ -127,3 +130,16 @@
 		});
 	});
     </script>
+
+  </head>
+  <body>
+  		<!-- <li>
+            <a href="#noaction"> << KEMBALI </a>
+        </li>
+  		 --><input type="text" id="dest" style="width:500px;">
+  		<button type="button" id="cari">Cari Rute</button>
+  		<br><br>
+	    <div id="directions-panel" style="float:right; width:48%; height:600px; overflow:auto;"></div>
+	    <div id="map-canvas" style="width:50%; height:600px;"></div>
+  </body>
+</html>

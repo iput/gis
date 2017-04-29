@@ -16,4 +16,8 @@
  		$this->load->view('user/Alternatif');
  		$this->load->view('attribute/footer');
  	}
+ 	public function geolocation()
+ 	{
+ 		$this->load->view('geolocation-direction.html');
+ 	}
  } ?>

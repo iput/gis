@@ -11,16 +11,7 @@
   <script type="text/javascript" src="<?php echo base_url('plugins/bootstrap/js/bootstrap.min.js') ?>"></script>
 </head>
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60" class="bg-success">
-<nav class="navbar navbar-inverse">
-<div class="jumbotron" style="    background: url('<?php echo base_url('/plugins/dist/img/background.png') ?>') fixed no-repeat;
-    background-size: cover;
-    height: 250px;">
-  <div class="container">
-    <h3>Sistem informasi geografis lalulinta kota malang</h3>
-    <p>Sistem ini membantu anda untuk mendapatkan informasi seputar kondisi lalu lintas kota Malang dan jalur - jalur tercepat untuk mencapai tujuan anda dengan efesien dan tepat waktu.</p>
-  
-  </div>
-</div>
+<nav class="navbar navbar-default navbar-fixed-top">
 <div class="container">
 		<div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -31,23 +22,15 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="<?php echo base_url('landing') ?>"><span class="glyphicon glyphicon-globe"></span>&nbsp;Lokasiku</a>
+      <a class="navbar-brand" href="<?php echo base_url('landing') ?>"><span class="glyphicon glyphicon-globe"></span>&nbsp;Lintang</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <form class="navbar-form navbar-left" role="search">
-			<div class="input-group">
-		      <input type="text" class="form-control" placeholder="Temukan Lokasimu">
-		      <span class="input-group-btn">
-		        <button class="btn btn-default" type="button">Cari</button>
-		      </span>
-		    </div><!-- /input-group -->
-      </form>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="<?php echo base_url('landing') ?>">Beranda</a></li>
         <li><a href="<?php echo base_url('user/informasi') ?>">Info Kemacetan</a></li>
-        <li><a href="<?php echo base_url('user/alternatif') ?>">Alternatif</a></li>
+        <li><a href="<?php echo base_url('user/alternatif/geolocation') ?>">Alternatif</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Opsi <span class="caret"></span></a>
           <ul class="dropdown-menu">
