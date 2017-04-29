@@ -11,8 +11,9 @@
 		<?php foreach ($berita as $rows): ?>
           <div class="col-md-12">
           <div class="box box-success box-solid">
+						<input type="hidden" name="id_berita" value="<?= $rows['id_berita']?>">
             <div class="box-header with-border">
-              <h3 class="box-title"><?php echo $rows['judul_berita'] ?></h3>
+              <h3 class="box-title"><?php echo $rows['judul_berita'] ?><a href="<?php echo base_url('admin/c_berita/editBerita/'.$rows['id_berita'])?>">&nbsp;<span class="glyphicon glyphicon-pencil"></span></a></h3>
 
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -22,7 +23,7 @@
             <!-- /.box-header -->
             <div class="box-body">
               <dl>
-                <dt><?php echo date('d F Y', strtotime($rows['waktu_input']))?></dt>
+                <dt>Diupdate&nbsp; <?php echo date('d F Y', strtotime($rows['waktu_input']))?></dt>
                 <dd>Penulis</dd>
                 <dt><?php echo $rows['id_user']; ?></dt>
                 <dd><?php echo $rows['isi_berita']; ?></dd>
