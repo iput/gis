@@ -156,6 +156,7 @@
             <li><a href="<?php echo base_url('admin/c_jalan') ?>" class="fa fa-circle-o">&nbsp;Jalan</a></li>
             <li><a href="<?php echo base_url('admin/c_kemacetan') ?>" class="fa fa-circle-o">&nbsp;Kemacetan</a></li>
             <li><a href="<?php echo base_url('admin/c_alter') ?>" class="fa fa-circle-o">&nbsp;Alternatif</a></li>
+            <li><a href="<?php echo base_url('admin/c_jalan/trackJalan')?>" class="fa fa-circle-o">&nbsp;Track Jarak</a></li>
           </ul>
         </li>
         <li>
@@ -164,7 +165,7 @@
             <span>Berita</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
-            </span>            
+            </span>
           </a>
         </li>
         <li>
@@ -172,7 +173,7 @@
             <i class="fa fa-gears"></i> <span>Setting</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
-            </span>            
+            </span>
           </a>
         </li>
       </ul>
