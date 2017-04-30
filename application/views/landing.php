@@ -36,23 +36,23 @@
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand page-scroll" href="#page-top">Start Bootstrap</a>
+                <a class="navbar-brand page-scroll" href="#page-top">SI LINTANG</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a class="page-scroll" href="#about">About</a>
+                        <a class="page-scroll" href="#about">Berita</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#services">Services</a>
+                        <a class="page-scroll" href="#services">Alternatif</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#portfolio">Portfolio</a>
+                        <a class="page-scroll" href="#portfolio">Tentang Kami</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#contact">Contact</a>
+                        <a class="page-scroll" href="#contact">Login</a>
                     </li>
                 </ul>
             </div>
@@ -64,10 +64,10 @@
     <header>
         <div class="header-content">
             <div class="header-content-inner">
-                <h1 id="homeHeading">Your Favorite Source of Free Bootstrap Themes</h1>
+                <h1 id="homeHeading">LALU LINTAS KOTA MALANG</h1>
                 <hr>
-                <p>Start Bootstrap can help you build better websites using the Bootstrap CSS framework! Just download your template and start going, no strings attached!</p>
-                <a href="#about" class="btn btn-primary btn-xl page-scroll">Find Out More</a>
+                <p>LINTANG Membantu anda menempuh perjalanan dengan aman, nyaman, dan efektif. Bersama kami atasi masalah kemacetan dan sampai di tujuan anda dengan tepat waktu</p>
+                <a href="#about" class="btn btn-primary btn-xl page-scroll">Login</a>
             </div>
         </div>
     </header>
@@ -76,10 +76,10 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">We've got what you need!</h2>
+                    <h2 class="section-heading">Berita Hari Ini</h2>
                     <hr class="light">
-                    <p class="text-faded">Start Bootstrap has everything you need to get your new website up and running in no time! All of the templates and themes on Start Bootstrap are open source, free to download, and easy to use. No strings attached!</p>
-                    <a href="#services" class="page-scroll btn btn-default btn-xl sr-button">Get Started!</a>
+                    <p class="text-faded"></p>
+                    <a href="#services" class="page-scroll btn btn-default btn-xl sr-button">Selengkapnya</a>
                 </div>
             </div>
         </div>
@@ -99,29 +99,29 @@
                 <div class="col-lg-3 col-md-6 text-center">
                     <div class="service-box">
                         <i class="fa fa-4x fa-diamond text-primary sr-icons"></i>
-                        <h3>Sturdy Templates</h3>
-                        <p class="text-muted">Our templates are updated regularly so they don't break.</p>
+                        <h3>Informasi</h3>
+                        <p class="text-muted">Temukan lokasi anda</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 text-center">
                     <div class="service-box">
                         <i class="fa fa-4x fa-paper-plane text-primary sr-icons"></i>
-                        <h3>Ready to Ship</h3>
-                        <p class="text-muted">You can use this theme as is, or you can make changes!</p>
+                        <h3>Alternatif</h3>
+                        <p class="text-muted">Tempuh perjalanan anda dengan waktu yang lebih cepat</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 text-center">
                     <div class="service-box">
                         <i class="fa fa-4x fa-newspaper-o text-primary sr-icons"></i>
-                        <h3>Up to Date</h3>
-                        <p class="text-muted">We update dependencies to keep things fresh.</p>
+                        <h3>Berita</h3>
+                        <p class="text-muted">Berita terupdate seputar lalu lintas Kota Malang</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 text-center">
                     <div class="service-box">
                         <i class="fa fa-4x fa-heart text-primary sr-icons"></i>
-                        <h3>Made with Love</h3>
-                        <p class="text-muted">You have to make your websites with love these days!</p>
+                        <h3>Kritik dan Saran</h3>
+                        <p class="text-muted">Tinggalkan kritik dan saran untuk pengembangan LINTANG yang lebih baik.</p>
                     </div>
                 </div>
             </div>
@@ -228,8 +228,8 @@
     <aside class="bg-dark">
         <div class="container text-center">
             <div class="call-to-action">
-                <h2>Free Download at Start Bootstrap!</h2>
-                <a href="http://startbootstrap.com/template-overviews/creative/" class="btn btn-default btn-xl sr-button">Download Now!</a>
+                <h2>Tentang Kami</h2>
+                <p> SI LINTANG merupakan Sistem Informasi Lalu Lintas Kota Malang, Sistem ini di buat oleh kelompok 7 untuk memenuhi tugas matakuliah Sistem Informasi Geografi. SI LINTANG ini membantu memudahkan anda untuk menempuh perjalanan di area kota Malang. Sistem ini memberikan Informasi mengenai kondisi lalu lintas di Kota Malang, dan memberikan anda saran rute alternatif untuk sampai ke tempat tujuan lebih cepat, selain itu, sistem ini juga menghadirkan berita - berita terkini mengenai kondisi lalu lintas di area kota Malang</p> 
             </div>
         </div>
     </aside>
