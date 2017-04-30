@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Creative - Start Bootstrap Theme</title>
+    <title>SI LINTANG</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo base_url()?>plugins/landing/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
