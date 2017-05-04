@@ -20,6 +20,7 @@
  		$this->load->view('attribute/adm_footer');
  	}
 
+
  	public function beritaBaru()
  	{
  		$this->load->view('attribute/adm_header');

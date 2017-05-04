@@ -77,6 +77,22 @@
         font-size: 13px;
         font-weight: 300;
       }
+      #panel-info{
+  width: 100%;
+  background: orange;
+  padding: 10px;
+  overflow: scroll;
+  height: 500px;
+
+  /*script tambahan khusus untuk IE */
+  scrollbar-face-color: #CE7E00;
+  scrollbar-shadow-color: #FFFFFF;
+  scrollbar-highlight-color: #6F4709;
+  scrollbar-3dlight-color: #11111;
+  scrollbar-darkshadow-color: #6F4709;
+  scrollbar-track-color: #FFE8C1;
+  scrollbar-arrow-color: #6F4709;
+}
     </style>
 </head>
 
@@ -96,7 +112,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a class="page-scroll" href="#about">Temukan Alternatif</a>
+                        <a class="page-scroll" href="#about">Alternatif</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#services">Layanan</a>
@@ -105,8 +121,8 @@
                         <a class="page-scroll" href="#portfolio">Tentang Kami</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#contact">Login</a>
-                    </li>
+                    <a href="#contact" class="page-scroll">Kritik & Saran</a>
+                  </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -120,7 +136,7 @@
                 <h1 id="homeHeading">LALU LINTAS KOTA MALANG</h1>
                 <hr>
                 <p>LINTANG Membantu anda menempuh perjalanan dengan aman, nyaman, dan efektif. Bersama kami atasi masalah kemacetan dan sampai di tujuan anda dengan tepat waktu</p>
-                <a href="#about" class="btn btn-primary btn-xl page-scroll">Login</a>
+                <a href="<?php echo base_url('admin/admin/login')?>" class="btn btn-primary btn-xl page-scroll">Login</a>
             </div>
         </div>
     </header>
@@ -133,19 +149,26 @@
                     <div class="form-inline text-center">
                       <input type="text" id="origin-input" class="form-control" placeholder="Masukan Lokasi anda">
                       <input type="text" id="destination-input" class="form-control" placeholder="Masukan Tujuan anda">
-                      </div>
-                      <label>Pilih Mode :</label>
+                      <label class="control-label">Pilih Mode :</label>
                         <input type="radio" name="type" id="changemode-driving" checked="checked">
                         <label for="changemode-driving">Kendaraan</label>
                         <input type="radio" name="type" id="changemode-walking">
                         <label for="changemode-walking">berjalan</label>
                         <input type="radio" name="type" id="changemode-transit">
                         <label for="changemode-transit">Transit</label>
+                      </div>
                     </div>
                 </div>
-                <div id="map" style="width : 100%; height: 400px;"></div>
+                <div class="row">
+                  <div class="col-md-8">
+                    <div id="map" style="width : 100%; height: 500px;"></div>
+                  </div>
+                  <div class="col-md-4">
+                    <div id="panel-info" style="background-color:white;"></div>
+                  </div>
+                </div>
             </div>
-        </div>
+
     </section>
 
     <section id="services">
@@ -207,17 +230,29 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">Let's Get In Touch!</h2>
+                    <h2 class="section-heading">Ayo Ikut Berbagi</h2>
                     <hr class="primary">
-                    <p>Ready to start your next project with us? That's great! Give us a call or send us an email and we will get back to you as soon as possible!</p>
+                    <p>Sedikit Banyak saran yang anda masukan merupakan suatu hal istimewa bagi kami
+                      <br>TinggalKan saran Untuk Kami dalam rangka ikut mengembangkan sistem yang saat ini tengah kami tangani</p>
                 </div>
-                <div class="col-lg-4 col-lg-offset-2 text-center">
-                    <i class="fa fa-phone fa-3x sr-contact"></i>
-                    <p>123-456-6789</p>
-                </div>
-                <div class="col-lg-4 text-center">
-                    <i class="fa fa-envelope-o fa-3x sr-contact"></i>
-                    <p><a href="mailto:your-email@your-domain.com">feedback@startbootstrap.com</a></p>
+                <div class="col-lg-4 col-lg-offset-4">
+                    <form class="form-vertical" action="" method="post">
+                      <div class="form-group">
+                        <label>Nama anda</label>
+                        <input type="text" name="txtNama" value="" class="form-control" placeholder="nama anda">
+                      </div>
+                      <div class="form-group">
+                        <label>Email anda</label>
+                        <input type="email" name="txtEmail" value="" placeholder="Email anda" class="form-control">
+                      </div>
+                      <div class="form-group">
+                        <label>Kritik & Saran</label>
+                        <textarea name="kritik" rows="8" cols="80" class="form-control"></textarea>
+                      </div>
+                      <div class="form-group">
+                        <button type="submit" class="btn btn-primary">Kirim Kritikan</button>
+                      </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -265,6 +300,7 @@
         this.directionsService = new google.maps.DirectionsService;
         this.directionsDisplay = new google.maps.DirectionsRenderer;
         this.directionsDisplay.setMap(map);
+        this.directionsDisplay.setPanel(document.getElementById('panel-info'));
 
         var originAutocomplete = new google.maps.places.Autocomplete(
             originInput, {placeIdOnly: true});
