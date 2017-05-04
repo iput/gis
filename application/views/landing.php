@@ -24,7 +24,60 @@
 
     <!-- Theme CSS -->
     <link href="<?php echo base_url()?>plugins/landing/css/creative.min.css" rel="stylesheet">
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      .controls {
+        margin-top: 10px;
+        border: 1px solid transparent;
+        border-radius: 2px 0 0 2px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        height: 32px;
+        outline: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      }
 
+      #origin-input,
+      #destination-input {
+        background-color: #fff;
+        font-family: Roboto;
+        font-size: 15px;
+        font-weight: 300;
+        margin-left: 10px;
+        margin-top: 20px;
+        padding: 0 11px 0 13px;
+        text-overflow: ellipsis;
+        width: 200px;
+      }
+
+      #origin-input:focus,
+      #destination-input:focus {
+        border-color: #4d90fe;
+      }
+
+      #mode-selector {
+        color: #fff;
+        background-color: #4d90fe;
+        margin-left: 12px;
+        padding: 5px 11px 0px 11px;
+      }
+
+      #mode-selector label {
+        font-family: Roboto;
+        font-size: 13px;
+        font-weight: 300;
+      }
+    </style>
 </head>
 
 <body id="page-top">
@@ -43,10 +96,10 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a class="page-scroll" href="#about">Berita</a>
+                        <a class="page-scroll" href="#about">Temukan Alternatif</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#services">Alternatif</a>
+                        <a class="page-scroll" href="#services">Layanan</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#portfolio">Tentang Kami</a>
@@ -75,12 +128,22 @@
     <section class="bg-primary" id="about">
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">Berita Hari Ini</h2>
-                    <hr class="light">
-                    <p class="text-faded"></p>
-                    <a href="#services" class="page-scroll btn btn-default btn-xl sr-button">Selengkapnya</a>
+                <div class="col-lg-12 text-center">
+                    <h2 class="section-heading">Temukan Alternatif</h2>
+                    <div class="form-inline text-center">
+                      <input type="text" id="origin-input" class="form-control" placeholder="Masukan Lokasi anda">
+                      <input type="text" id="destination-input" class="form-control" placeholder="Masukan Tujuan anda">
+                      </div>
+                      <label>Pilih Mode :</label>
+                        <input type="radio" name="type" id="changemode-driving" checked="checked">
+                        <label for="changemode-driving">Kendaraan</label>
+                        <input type="radio" name="type" id="changemode-walking">
+                        <label for="changemode-walking">berjalan</label>
+                        <input type="radio" name="type" id="changemode-transit">
+                        <label for="changemode-transit">Transit</label>
+                    </div>
                 </div>
+                <div id="map" style="width : 100%; height: 400px;"></div>
             </div>
         </div>
     </section>
@@ -89,7 +152,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">At Your Service</h2>
+                    <h2 class="section-heading">Layanan Kami</h2>
                     <hr class="primary">
                 </div>
             </div>
@@ -127,112 +190,18 @@
             </div>
         </div>
     </section>
-
-    <section class="no-padding" id="portfolio">
-        <div class="container-fluid">
-            <div class="row no-gutter popup-gallery">
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/fullsize/1.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/1.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Category
-                                </div>
-                                <div class="project-name">
-                                    Project Name
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/fullsize/2.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/2.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Category
-                                </div>
-                                <div class="project-name">
-                                    Project Name
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/fullsize/3.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/3.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Category
-                                </div>
-                                <div class="project-name">
-                                    Project Name
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/fullsize/4.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/4.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Category
-                                </div>
-                                <div class="project-name">
-                                    Project Name
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/fullsize/5.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/5.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Category
-                                </div>
-                                <div class="project-name">
-                                    Project Name
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="img/portfolio/fullsize/6.jpg" class="portfolio-box">
-                        <img src="img/portfolio/thumbnails/6.jpg" class="img-responsive" alt="">
-                        <div class="portfolio-box-caption">
-                            <div class="portfolio-box-caption-content">
-                                <div class="project-category text-faded">
-                                    Category
-                                </div>
-                                <div class="project-name">
-                                    Project Name
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <aside class="bg-dark">
+    <section id="portfolio" class="bg-dark">
+      <div class="container">
+      <div class="row">
         <div class="container text-center">
             <div class="call-to-action">
                 <h2>Tentang Kami</h2>
-                <p> SI LINTANG merupakan Sistem Informasi Lalu Lintas Kota Malang, Sistem ini di buat oleh kelompok 7 untuk memenuhi tugas matakuliah Sistem Informasi Geografi. SI LINTANG ini membantu memudahkan anda untuk menempuh perjalanan di area kota Malang. Sistem ini memberikan Informasi mengenai kondisi lalu lintas di Kota Malang, dan memberikan anda saran rute alternatif untuk sampai ke tempat tujuan lebih cepat, selain itu, sistem ini juga menghadirkan berita - berita terkini mengenai kondisi lalu lintas di area kota Malang</p> 
+                <p> SI LINTANG merupakan Sistem Informasi Lalu Lintas Kota Malang, Sistem ini di buat oleh kelompok 7 untuk memenuhi tugas matakuliah Sistem Informasi Geografi. SI LINTANG ini membantu memudahkan anda untuk menempuh perjalanan di area kota Malang. Sistem ini memberikan Informasi mengenai kondisi lalu lintas di Kota Malang, dan memberikan anda saran rute alternatif untuk sampai ke tempat tujuan lebih cepat, selain itu, sistem ini juga menghadirkan berita - berita terkini mengenai kondisi lalu lintas di area kota Malang</p>
             </div>
         </div>
-    </aside>
+      </div>
+      </div>
+    </section>
 
     <section id="contact">
         <div class="container">
@@ -267,7 +236,105 @@
 
     <!-- Theme JavaScript -->
     <script src="<?php echo base_url()?>plugins/landing/js/creative.min.js"></script>
+    <script>
+      // This example requires the Places library. Include the libraries=places
+      // parameter when you first load the API. For example:
+      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
 
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          mapTypeControl: false,
+          center : {lat : -7.9531699 , lng :112.59855563 },
+          zoom: 13
+        });
+
+        new AutocompleteDirectionsHandler(map);
+      }
+
+       /**
+        * @constructor
+       */
+      function AutocompleteDirectionsHandler(map) {
+        this.map = map;
+        this.originPlaceId = null;
+        this.destinationPlaceId = null;
+        this.travelMode = 'WALKING';
+        var originInput = document.getElementById('origin-input');
+        var destinationInput = document.getElementById('destination-input');
+        var modeSelector = document.getElementById('mode-selector');
+        this.directionsService = new google.maps.DirectionsService;
+        this.directionsDisplay = new google.maps.DirectionsRenderer;
+        this.directionsDisplay.setMap(map);
+
+        var originAutocomplete = new google.maps.places.Autocomplete(
+            originInput, {placeIdOnly: true});
+        var destinationAutocomplete = new google.maps.places.Autocomplete(
+            destinationInput, {placeIdOnly: true});
+
+        this.setupClickListener('changemode-walking', 'WALKING');
+        this.setupClickListener('changemode-transit', 'TRANSIT');
+        this.setupClickListener('changemode-driving', 'DRIVING');
+
+        this.setupPlaceChangedListener(originAutocomplete, 'ORIG');
+        this.setupPlaceChangedListener(destinationAutocomplete, 'DEST');
+
+        this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(originInput);
+        this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(destinationInput);
+        this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(modeSelector);
+      }
+
+      // Sets a listener on a radio button to change the filter type on Places
+      // Autocomplete.
+      AutocompleteDirectionsHandler.prototype.setupClickListener = function(id, mode) {
+        var radioButton = document.getElementById(id);
+        var me = this;
+        radioButton.addEventListener('click', function() {
+          me.travelMode = mode;
+          me.route();
+        });
+      };
+
+      AutocompleteDirectionsHandler.prototype.setupPlaceChangedListener = function(autocomplete, mode) {
+        var me = this;
+        autocomplete.bindTo('bounds', this.map);
+        autocomplete.addListener('place_changed', function() {
+          var place = autocomplete.getPlace();
+          if (!place.place_id) {
+            window.alert("Please select an option from the dropdown list.");
+            return;
+          }
+          if (mode === 'ORIG') {
+            me.originPlaceId = place.place_id;
+          } else {
+            me.destinationPlaceId = place.place_id;
+          }
+          me.route();
+        });
+
+      };
+
+      AutocompleteDirectionsHandler.prototype.route = function() {
+        if (!this.originPlaceId || !this.destinationPlaceId) {
+          return;
+        }
+        var me = this;
+
+        this.directionsService.route({
+          origin: {'placeId': this.originPlaceId},
+          destination: {'placeId': this.destinationPlaceId},
+          travelMode: this.travelMode
+        }, function(response, status) {
+          if (status === 'OK') {
+            me.directionsDisplay.setDirections(response);
+          } else {
+            window.alert('Directions request failed due to ' + status);
+          }
+        });
+      };
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgFgI-Iqpul47Fffg_DRm4OsP9LoZjlfs&libraries=places&callback=initMap&language=id"
+        async defer></script>
 </body>
 
 </html>
