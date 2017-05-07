@@ -93,5 +93,44 @@
     marker.setMap(map);
     }
     </script>
-  </script>
+
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJ1XPieE32_RzapVtgPa8KXDU9qeilbTE&callback=myMap"></script>
+<!-- <script type="text/javascript">
+  var map;
+  var infowindow;
+  var ikon;
+  function initialize(lat, lng){
+    var mapDiv = document.getElementById('mapcanvas');
+    map = new google.maps.Map(mapDiv,{
+      center : new google.maps.LatLng(lat,lng),
+      zoom : 13,
+      mapTypeId : google.maps/mapTypeId.ROADMAP
+    });
+    infowindow = new google.maps.InfoWindow();
+    <?php foreach ($map as $row): ?>
+    var latview = '<?php echo $row['latitude']?>';
+    var lngview = '<?php echo $row['longitude']?>';
+    var namaJalan = '<?php echo $row['nama_jalan']?>';
+    var titik_macet = '<?php echo $row['titik_kemacetan']?>';
+    createMarker(latview,lngview,namaJalan,titik_macet);
+    <?php endforeach; ?>
+  }
+
+  function createMarker(lt, lng, namajalan,titik) {
+    var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
+    var latlng = new google.maps.LatLng(lt,lg);
+    var marker = new google.maps.Marker({
+      position : latlng,
+      map : map,
+      icon : image
+    });
+    google.maps.event.addListener(marker, 'click', function(){
+      var myHtml = "<table>"+
+                    "<tr><td>"+namaJalan+"</td></tr>"+
+                    "<tr><td>"+titik+"</td></tr>"+
+                    "</table>";
+                    infowindow.setContent(myHtml);
+                    infowindow.open(map,marker);
+    });
+  }
+</script> -->

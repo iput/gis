@@ -132,17 +132,13 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         <li class="header">NAVIGASI UTAMA</li>
-        <li class="treeview">
-          <a href="#">
+        <li>
+          <a href="<?php echo base_url('admin/admin')?>">
             <i class="fa fa-dashboard"></i> <span>Beranda</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
-          <ul class="treeview-menu">
-            <li><a href="#"><i class="fa fa-circle-o"></i> Peta</a></li>
-            <li><a href="#"><i class="fa fa-circle-o"></i> Berita</a></li>
-          </ul>
         </li>
         <li class="treeview">
           <a href="#">
@@ -156,6 +152,7 @@
             <li><a href="<?php echo base_url('admin/c_jalan') ?>" class="fa fa-circle-o">&nbsp;Jalan</a></li>
             <li><a href="<?php echo base_url('admin/c_kemacetan') ?>" class="fa fa-circle-o">&nbsp;Kemacetan</a></li>
             <li><a href="<?php echo base_url('admin/c_alter') ?>" class="fa fa-circle-o">&nbsp;Alternatif</a></li>
+            <li><a href="<?php echo base_url('admin/c_jalan/trackJalan')?>" class="fa fa-circle-o">&nbsp;Track Jarak</a></li>
           </ul>
         </li>
         <li>
@@ -164,7 +161,7 @@
             <span>Berita</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
-            </span>            
+            </span>
           </a>
         </li>
         <li>
@@ -172,7 +169,7 @@
             <i class="fa fa-gears"></i> <span>Setting</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
-            </span>            
+            </span>
           </a>
         </li>
       </ul>

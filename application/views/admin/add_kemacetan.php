@@ -39,8 +39,7 @@
 			<div class="form-group">
 				<label class="control-label col-md-2">Titik Kemacetan</label>
 				<div class="col-md-9">
-					<input type="text" name="txtTitikMacet" class="form-control
-					" id="titik_macet">
+					<input type="text" name="txtTitikMacet" class="form-control" id="titik_macet">
 				</div>
 			</div>
 			<div class="form-group">
@@ -58,12 +57,6 @@
 			<div class="form-group">
 				<div class="col-md-2"></div>
 				<div class="col-md-9">
-					<div id="peta"></div>
-				</div>
-			</div>
-			<div class="form-group">
-				<div class="col-md-2"></div>
-				<div class="col-md-9">
 					<a href="<?php echo base_url('admin/c_kemacetan') ?>" class="btn btn-danger btn-flat">batal</a>
 					<button type="submit" class="btn btn-success btn-flat">Simpan</button>
 				</div>
@@ -74,29 +67,16 @@
 	</section>
 </div>
 <script type="text/javascript">
-	function myMap() {
-		var map = new google.maps.Map(document.getElementById('peta'),{
-			center : new google.maps.LatLng(-7.9531699,112.59855563),
-			zoom : 15
-		});
-		marker = new google.maps.Marker({
-			position : map.getCenter(),
-			map : map,
-			title : 'geser point untuk mendapat Lokasi',
-			draggable : true,
-			flat : false
-		});
-		google.maps.event.addListener(marker, 'dragend', function(){
-			latlng = marker.getPosition();
-			url = 'https://maps.googleapis.com/maps/api/geocode/json?latlng='+latlng.lat()+','+latlng.lng()+'&sensor=false';
-			$.get(url, function(data){
-				if (data.status=='OK') {
-					map.setCenter(data.results[0].geometry.location);
-					$('#titik_macet').val(data.results[0].formatted_address);
-					$('#lat').val(data.results[0].geometry.location.lat);
-					$('#lng').val(data.results[0].geometry.location.lng);
-				}
-			});
+	function getAlamat() {
+		var geocoder = new google.maps.Geocoder();
+		var address = document.getElementById('titik_macet').val();
+		geocoder.geocode({'address' : address}, function(results, status){
+			if (status==google.maps.GeocoderStatus.OK) {
+				$('#lng').val(results[0].geometry.location.lng());
+				$('#lat').val(results[0].geometry.location.lat());
+			}else{
+				alert('geocode gagal : '+status);
+			}
 		});
 	}
 </script>

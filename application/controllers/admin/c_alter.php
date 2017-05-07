@@ -1,10 +1,10 @@
 <?php defined('BASEPATH')OR exit('tidak ada akses yang diizinkan untuk halaman ini');
 /**
- * 
+ *
  */
  class C_alter extends CI_Controller
  {
- 	
+
  	function __construct()
  	{
  		parent::__construct();
@@ -23,4 +23,5 @@
  		$this->load->view('admin/add_alter');
  		$this->load->view('attribute/adm_footer');
  	}
+
  } ?>
