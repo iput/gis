@@ -1,10 +1,10 @@
 <?php defined('BASEPATH')OR exit('tidak ada akses terhadap jalan ini');
 /**
- * 
+ *
  */
  class C_kemacetan extends CI_Controller
  {
- 	
+
  	function __construct()
  	{
  		parent::__construct();
@@ -14,18 +14,22 @@
 
  	public function index()
  	{
- 		$datain = $this->macet->getAllMacet();
- 		$this->load->view('attribute/adm_header');
- 		$this->load->view('admin/v_kemacetan',array('macet'=>$datain));
- 		$this->load->view('attribute/adm_footer');
+ 		if ($this->session->userdata('username')&&$this->session->userdata('email')) {
+      $datain = $this->macet->getAllMacet();
+   		$this->load->view('attribute/adm_header');
+   		$this->load->view('admin/v_kemacetan',array('macet'=>$datain));
+   		$this->load->view('attribute/adm_footer');
+ 		}
  	}
 
  	public function add_kemacetan()
  	{
- 		$dataJalan = $this->jalan->getAlljalan();
- 		$this->load->view('attribute/adm_header');
- 		$this->load->view('admin/add_kemacetan', array('jalan'=>$dataJalan));
- 		$this->load->view('attribute/adm_footer');	
+ 		if ($this->session->userdata('username')&& $this->session->userdata('email')) {
+      $dataJalan = $this->jalan->getAlljalan();
+   		$this->load->view('attribute/adm_header');
+   		$this->load->view('admin/add_kemacetan', array('jalan'=>$dataJalan));
+   		$this->load->view('attribute/adm_footer');
+ 		}
  	}
 
  	public function tambahKemacetan()

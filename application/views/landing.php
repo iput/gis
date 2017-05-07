@@ -302,6 +302,7 @@
         this.directionsDisplay.setMap(map);
         this.directionsDisplay.setPanel(document.getElementById('panel-info'));
 
+
         var originAutocomplete = new google.maps.places.Autocomplete(
             originInput, {placeIdOnly: true});
         var destinationAutocomplete = new google.maps.places.Autocomplete(

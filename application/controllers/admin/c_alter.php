@@ -12,16 +12,24 @@
 
  	public function index()
  	{
- 		$this->load->view('attribute/adm_header');
- 		$this->load->view('admin/v_alter');
- 		$this->load->view('attribute/adm_footer');
+ 		if ($this->session->userdata('username')&&$this->session->userdata('email')) {
+      $this->load->view('attribute/adm_header');
+   		$this->load->view('admin/v_alter');
+   		$this->load->view('attribute/adm_footer');
+ 		}else{
+      redirect('admin/admin/login');
+    }
  	}
 
  	public function add_alter()
  	{
- 		$this->load->view('attribute/adm_header');
- 		$this->load->view('admin/add_alter');
- 		$this->load->view('attribute/adm_footer');
+    if ($this->session->userdata('username')&&$this->session->userdata('email')) {
+      $this->load->view('attribute/adm_header');
+      $this->load->view('admin/add_alter');
+      $this->load->view('attribute/adm_footer');
+    }else{
+      redirect('admin/admin/login');
+    }
  	}
 
  } ?>

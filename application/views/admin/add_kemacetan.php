@@ -39,7 +39,7 @@
 			<div class="form-group">
 				<label class="control-label col-md-2">Titik Kemacetan</label>
 				<div class="col-md-9">
-					<input type="text" name="txtTitikMacet" class="form-control" id="titik_macet">
+					<input type="text" name="txtTitikMacet" class="form-control" id="titik_macet" onchange="getAlamat()">
 				</div>
 			</div>
 			<div class="form-group">
@@ -52,6 +52,7 @@
 				<label class="control-label col-md-2">Latitude</label>
 				<div class="col-md-9">
 					<input type="text" name="txtLat" class="form-control" id="lat" readonly>
+					<input type="hidden" name="iduser" value="<?php echo $this->session->userdata('iduser')?>">
 				</div>
 			</div>
 			<div class="form-group">
@@ -67,9 +68,9 @@
 	</section>
 </div>
 <script type="text/javascript">
-	function getAlamat() {
+		function getAlamat() {
 		var geocoder = new google.maps.Geocoder();
-		var address = document.getElementById('titik_macet').val();
+		var address = document.getElementById('titik_macet').value;
 		geocoder.geocode({'address' : address}, function(results, status){
 			if (status==google.maps.GeocoderStatus.OK) {
 				$('#lng').val(results[0].geometry.location.lng());
@@ -80,4 +81,4 @@
 		});
 	}
 </script>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJ1XPieE32_RzapVtgPa8KXDU9qeilbTE&callback=myMap"async defer></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJ1XPieE32_RzapVtgPa8KXDU9qeilbTE"async defer></script>

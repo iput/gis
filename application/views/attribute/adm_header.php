@@ -70,7 +70,7 @@
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="<?php echo base_url()?>plugins/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-              <span class="hidden-xs">Admin</span>
+              <span class="hidden-xs"><?php echo $this->session->userdata('username') ?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -114,7 +114,7 @@
           <img src="<?php echo base_url()?>plugins/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
         </div>
         <div class="pull-left info">
-          <p>Admin</p>
+          <p><?php echo $this->session->userdata('username'); ?></p>
           <a href="#"><i class="fa fa-circle text-success"></i> Active</a>
         </div>
       </div>
@@ -152,7 +152,6 @@
             <li><a href="<?php echo base_url('admin/c_jalan') ?>" class="fa fa-circle-o">&nbsp;Jalan</a></li>
             <li><a href="<?php echo base_url('admin/c_kemacetan') ?>" class="fa fa-circle-o">&nbsp;Kemacetan</a></li>
             <li><a href="<?php echo base_url('admin/c_alter') ?>" class="fa fa-circle-o">&nbsp;Alternatif</a></li>
-            <li><a href="<?php echo base_url('admin/c_jalan/trackJalan')?>" class="fa fa-circle-o">&nbsp;Track Jarak</a></li>
           </ul>
         </li>
         <li>

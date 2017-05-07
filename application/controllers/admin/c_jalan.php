@@ -13,10 +13,12 @@
 
  	public function index()
  	{
- 		$data = $this->m_jalan->getAllJalan();
- 		$this->load->view('attribute/adm_header');
- 		$this->load->view('admin/v_jalan', array('data_jalan'=>$data));
- 		$this->load->view('attribute/adm_footer');
+ 		if ($this->session->userdata('username')&&$this->session->userdata('email')) {
+      $data = $this->m_jalan->getAllJalan();
+   		$this->load->view('attribute/adm_header');
+   		$this->load->view('admin/v_jalan', array('data_jalan'=>$data));
+   		$this->load->view('attribute/adm_footer');
+ 		}
  	}
   public function trackJalan()
   {

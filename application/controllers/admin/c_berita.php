@@ -14,18 +14,22 @@
 
  	public function index()
  	{
- 		$data = $this->m_berita->getAllBerita();
- 		$this->load->view('attribute/adm_header');
- 		$this->load->view('admin/v_berita', array('berita'=>$data));
- 		$this->load->view('attribute/adm_footer');
+ 		if ($this->session->userdata('username')&&$this->session->userdata('email')) {
+      $data = $this->m_berita->getAllBerita();
+   		$this->load->view('attribute/adm_header');
+   		$this->load->view('admin/v_berita', array('berita'=>$data));
+   		$this->load->view('attribute/adm_footer');
+ 		}
  	}
 
 
  	public function beritaBaru()
  	{
- 		$this->load->view('attribute/adm_header');
- 		$this->load->view('admin/beritaBaru');
- 		$this->load->view('attribute/adm_footer');
+ 		if ($this->session->userdata('username')&&$this->session->userdata('email')) {
+      $this->load->view('attribute/adm_header');
+   		$this->load->view('admin/beritaBaru');
+   		$this->load->view('attribute/adm_footer');
+ 		}
  	}
 
  	public function TambahBerita()
@@ -45,7 +49,7 @@
  				"foto_berita"=>$this->input->post('txtSumber'),
  				"waktu_input"=> date('Y:m:d'),
  				"waktu_update"=>date('h:m:s'),
- 				"id_user"=>'1');
+ 				"id_user"=>$this->input->post('iduser'));
  			$result = $this->m_berita->insertBerita($dataBerita);
  			if ($result) {
  				$this->session->set_flashdata('sukses','Data Berita Berhasil ditambahkan');
