@@ -230,6 +230,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading"></h2>
+                    <hr class="primary">
+                    <p></p>
                     <h2 class="section-heading">Ayo Ikut Berbagi</h2>
                     <hr class="primary">
                     <p>Sedikit Banyak saran yang anda masukan merupakan suatu hal istimewa bagi kami
