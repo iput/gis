@@ -24,76 +24,7 @@
 
     <!-- Theme CSS -->
     <link href="<?php echo base_url()?>plugins/landing/css/creative.min.css" rel="stylesheet">
-    <style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map {
-        height: 100%;
-      }
-      /* Optional: Makes the sample page fill the window. */
-      html, body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-      .controls {
-        margin-top: 10px;
-        border: 1px solid transparent;
-        border-radius: 2px 0 0 2px;
-        box-sizing: border-box;
-        -moz-box-sizing: border-box;
-        height: 32px;
-        outline: none;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-      }
 
-      #origin-input,
-      #destination-input {
-        background-color: #fff;
-        font-family: Roboto;
-        font-size: 15px;
-        font-weight: 300;
-        margin-left: 10px;
-        margin-top: 20px;
-        padding: 0 11px 0 13px;
-        text-overflow: ellipsis;
-        width: 200px;
-      }
-
-      #origin-input:focus,
-      #destination-input:focus {
-        border-color: #4d90fe;
-      }
-
-      #mode-selector {
-        color: #fff;
-        background-color: #4d90fe;
-        margin-left: 12px;
-        padding: 5px 11px 0px 11px;
-      }
-
-      #mode-selector label {
-        font-family: Roboto;
-        font-size: 13px;
-        font-weight: 300;
-      }
-      #panel-info{
-  width: 100%;
-  background: orange;
-  padding: 10px;
-  overflow: scroll;
-  height: 500px;
-
-  /*script tambahan khusus untuk IE */
-  scrollbar-face-color: #CE7E00;
-  scrollbar-shadow-color: #FFFFFF;
-  scrollbar-highlight-color: #6F4709;
-  scrollbar-3dlight-color: #11111;
-  scrollbar-darkshadow-color: #6F4709;
-  scrollbar-track-color: #FFE8C1;
-  scrollbar-arrow-color: #6F4709;
-}
-    </style>
 </head>
 
 <body id="page-top">
@@ -142,33 +73,16 @@
     </header>
 
     <section class="bg-primary" id="about">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Temukan Alternatif</h2>
-                    <div class="form-inline text-center">
-                      <input type="text" id="origin-input" class="form-control" placeholder="Masukan Lokasi anda">
-                      <input type="text" id="destination-input" class="form-control" placeholder="Masukan Tujuan anda">
-                      <label class="control-label">Pilih Mode :</label>
-                        <input type="radio" name="type" id="changemode-driving" checked="checked">
-                        <label for="changemode-driving">Kendaraan</label>
-                        <input type="radio" name="type" id="changemode-walking">
-                        <label for="changemode-walking">berjalan</label>
-                        <input type="radio" name="type" id="changemode-transit">
-                        <label for="changemode-transit">Transit</label>
-                      </div>
-                    </div>
-                </div>
-                <div class="row">
-                  <div class="col-md-8">
-                    <div id="map" style="width : 100%; height: 500px;"></div>
-                  </div>
-                  <div class="col-md-4">
-                    <div id="panel-info" style="background-color:white;"></div>
-                  </div>
-                </div>
-            </div>
-
+      <h3 class="text-center">Temukan alternatif anda</h3>
+      <div class="container">
+      <div class="form-inline">
+        <input type="text" id="dest" style="width:500px;" class="form-control">
+        <button type="button" id="cari" class="btn btn-info">Cari Rute</button>
+      </div>
+      <br><br>
+      <div id="directions-panel" style="float:right; width:48%; height:500px; overflow:auto; background-color:#fff;"></div>
+      <div id="map-canvas" style="width:50%; height:500px; "></div>
+      </div>
     </section>
 
     <section id="services">
@@ -274,107 +188,113 @@
 
     <!-- Theme JavaScript -->
     <script src="<?php echo base_url()?>plugins/landing/js/creative.min.js"></script>
-    <script>
-      // This example requires the Places library. Include the libraries=places
-      // parameter when you first load the API. For example:
-      // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
-
-      function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
-          mapTypeControl: false,
-          center : {lat : -7.9531699 , lng :112.59855563 },
-          zoom: 13
-        });
-
-        new AutocompleteDirectionsHandler(map);
-      }
-
-       /**
-        * @constructor
-       */
-      function AutocompleteDirectionsHandler(map) {
-        this.map = map;
-        this.originPlaceId = null;
-        this.destinationPlaceId = null;
-        this.travelMode = 'WALKING';
-        var originInput = document.getElementById('origin-input');
-        var destinationInput = document.getElementById('destination-input');
-        var modeSelector = document.getElementById('mode-selector');
-        this.directionsService = new google.maps.DirectionsService;
-        this.directionsDisplay = new google.maps.DirectionsRenderer;
-        this.directionsDisplay.setMap(map);
-        this.directionsDisplay.setPanel(document.getElementById('panel-info'));
-
-
-        var originAutocomplete = new google.maps.places.Autocomplete(
-            originInput, {placeIdOnly: true});
-        var destinationAutocomplete = new google.maps.places.Autocomplete(
-            destinationInput, {placeIdOnly: true});
-
-        this.setupClickListener('changemode-walking', 'WALKING');
-        this.setupClickListener('changemode-transit', 'TRANSIT');
-        this.setupClickListener('changemode-driving', 'DRIVING');
-
-        this.setupPlaceChangedListener(originAutocomplete, 'ORIG');
-        this.setupPlaceChangedListener(destinationAutocomplete, 'DEST');
-
-        this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(originInput);
-        this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(destinationInput);
-        this.map.controls[google.maps.ControlPosition.TOP_LEFT].push(modeSelector);
-      }
-
-      // Sets a listener on a radio button to change the filter type on Places
-      // Autocomplete.
-      AutocompleteDirectionsHandler.prototype.setupClickListener = function(id, mode) {
-        var radioButton = document.getElementById(id);
-        var me = this;
-        radioButton.addEventListener('click', function() {
-          me.travelMode = mode;
-          me.route();
-        });
-      };
-
-      AutocompleteDirectionsHandler.prototype.setupPlaceChangedListener = function(autocomplete, mode) {
-        var me = this;
-        autocomplete.bindTo('bounds', this.map);
-        autocomplete.addListener('place_changed', function() {
-          var place = autocomplete.getPlace();
-          if (!place.place_id) {
-            window.alert("Please select an option from the dropdown list.");
-            return;
-          }
-          if (mode === 'ORIG') {
-            me.originPlaceId = place.place_id;
-          } else {
-            me.destinationPlaceId = place.place_id;
-          }
-          me.route();
-        });
-
-      };
-
-      AutocompleteDirectionsHandler.prototype.route = function() {
-        if (!this.originPlaceId || !this.destinationPlaceId) {
-          return;
-        }
-        var me = this;
-
-        this.directionsService.route({
-          origin: {'placeId': this.originPlaceId},
-          destination: {'placeId': this.destinationPlaceId},
-          travelMode: this.travelMode
-        }, function(response, status) {
-          if (status === 'OK') {
-            me.directionsDisplay.setDirections(response);
-          } else {
-            window.alert('Directions request failed due to ' + status);
-          }
-        });
-      };
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgFgI-Iqpul47Fffg_DRm4OsP9LoZjlfs&sensor=false&libraries=places&language=id"></script>
+    <script src="<?php echo base_url('gps/jquery.js')?>">
 
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgFgI-Iqpul47Fffg_DRm4OsP9LoZjlfs&libraries=places&callback=initMap&language=id"
-        async defer></script>
+    <script>
+
+    var dest;
+    var directionsDisplay;
+
+    // memanggil service Google Maps Direction
+  var directionsService = new google.maps.DirectionsService();
+  directionsDisplay = new google.maps.DirectionsRenderer();
+
+    $(document).ready(function() {
+        var myOptions = {
+            zoom: 12,
+            center: new google.maps.LatLng(-7.9531699,112.59855563),
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+
+        // posisi awal ketika halaman pertama kali dimuat
+        var map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
+
+        // memanggil fungsi geocoder autocomplete
+        var autocomplete = new google.maps.places.Autocomplete((document.getElementById('dest')),{ types: ['geocode'] });
+
+      /*
+        fungsi geolocation pada geocoder ini sangat penting
+        agar pencarian daerah tujuan pada textbox ga ngaco
+      */
+      if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+              var geolocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+              autocomplete.setBounds(new google.maps.LatLngBounds(geolocation,geolocation));
+          });
+      }
+
+  });
+
+  $(document).ready(function() {
+    // ketika tombol cari di klik, maka proses pencarian rute dimulai
+    $("#cari").click(function(){
+
+      dest = $("#dest").val();
+
+      var defaultLatLng = new google.maps.LatLng(-7.9531699,112.59855563);
+
+        if (navigator.geolocation) {
+            function success(pos) {
+                drawMap(pos.coords.latitude,pos.coords.longitude);
+            }
+
+            function fail(error) {
+                drawMap(defaultLatLng);
+            }
+
+            navigator.geolocation.getCurrentPosition(success, fail, { maximumAge: 500000, enableHighAccuracy:true, timeout: 6000 });
+
+        } else {
+            drawMap(defaultLatLng);
+        }
+
+        function drawMap(lat,lng) {
+
+            var myOptions = {
+                zoom: 15,
+                center: new google.maps.LatLng(lat,lng),
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+            var map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
+
+            // kita bikin marker untuk asal dengan koordinat user hasil dari geolocation
+            var markerorigin = new google.maps.Marker({
+                  position: new google.maps.LatLng(parseFloat(lat),parseFloat(lng)),
+                  map: map,
+                  title: "Origin",
+                  visible:false // kita ga perlu menampilkan markernya, jadi visibilitasnya kita set false
+        });
+
+            // membuat request ke Direction Service
+            var request = {
+          origin: markerorigin.getPosition(), // untuk daerah asal, kita ambil posisi user
+            destination: dest, // untuk daerah tujuan, kita ambil value dari textbox tujuan
+            provideRouteAlternatives:true, // set true, karena kita ingin menampilkan rute alternatif
+            travelMode: google.maps.TravelMode.DRIVING // set mode DRIVING (mode berkendara / kendaraan pribadi)
+
+        };
+
+
+        directionsService.route(request, function(response, status) {
+            if (status == google.maps.DirectionsStatus.OK) {
+              directionsDisplay.setDirections(response);
+            }
+          });
+        // menampiklkan rute pada peta dan juga direction panel sebagai petunjuk text
+          directionsDisplay.setMap(map);
+          directionsDisplay.setPanel(document.getElementById('directions-panel'));
+
+          // menampilkan layer traffic atau lalu-lintas pada peta
+          var trafficLayer = new google.maps.TrafficLayer();
+          trafficLayer.setMap(map);
+
+        }
+    });
+  });
+    </script>
 </body>
 
 </html>
