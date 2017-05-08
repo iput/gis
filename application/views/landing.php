@@ -197,7 +197,7 @@
     var dest;
     var directionsDisplay;
 
-    // memanggil service Google Maps Direction
+    
   var directionsService = new google.maps.DirectionsService();
   directionsDisplay = new google.maps.DirectionsRenderer();
 
@@ -208,27 +208,21 @@
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
 
-        // posisi awal ketika halaman pertama kali dimuat
+        
         var map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
 
-        // memanggil fungsi geocoder autocomplete
-        var autocomplete = new google.maps.places.Autocomplete((document.getElementById('dest')),{ types: ['geocode'] });
-
-      /*
-        fungsi geolocation pada geocoder ini sangat penting
-        agar pencarian daerah tujuan pada textbox ga ngaco
-      */
+        
+      var autocomplete = new google.maps.places.Autocomplete((document.getElementById('dest')),{ types: ['geocode'] });
       if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
               var geolocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
               autocomplete.setBounds(new google.maps.LatLngBounds(geolocation,geolocation));
           });
       }
-
   });
 
   $(document).ready(function() {
-    // ketika tombol cari di klik, maka proses pencarian rute dimulai
+    
     $("#cari").click(function(){
 
       dest = $("#dest").val();
@@ -260,20 +254,20 @@
 
             var map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
 
-            // kita bikin marker untuk asal dengan koordinat user hasil dari geolocation
+            
             var markerorigin = new google.maps.Marker({
                   position: new google.maps.LatLng(parseFloat(lat),parseFloat(lng)),
                   map: map,
                   title: "Origin",
-                  visible:false // kita ga perlu menampilkan markernya, jadi visibilitasnya kita set false
+                  visible:false 
         });
 
-            // membuat request ke Direction Service
+           
             var request = {
-          origin: markerorigin.getPosition(), // untuk daerah asal, kita ambil posisi user
-            destination: dest, // untuk daerah tujuan, kita ambil value dari textbox tujuan
-            provideRouteAlternatives:true, // set true, karena kita ingin menampilkan rute alternatif
-            travelMode: google.maps.TravelMode.DRIVING // set mode DRIVING (mode berkendara / kendaraan pribadi)
+          origin: markerorigin.getPosition(), 
+            destination: dest, 
+            provideRouteAlternatives:true, 
+            travelMode: google.maps.TravelMode.DRIVING 
 
         };
 
@@ -283,11 +277,11 @@
               directionsDisplay.setDirections(response);
             }
           });
-        // menampiklkan rute pada peta dan juga direction panel sebagai petunjuk text
+        
           directionsDisplay.setMap(map);
           directionsDisplay.setPanel(document.getElementById('directions-panel'));
 
-          // menampilkan layer traffic atau lalu-lintas pada peta
+          
           var trafficLayer = new google.maps.TrafficLayer();
           trafficLayer.setMap(map);
 
