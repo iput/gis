@@ -197,7 +197,7 @@
     var dest;
     var directionsDisplay;
 
-    
+
   var directionsService = new google.maps.DirectionsService();
   directionsDisplay = new google.maps.DirectionsRenderer();
 
@@ -208,10 +208,10 @@
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
 
-        
+
         var map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
 
-        
+
       var autocomplete = new google.maps.places.Autocomplete((document.getElementById('dest')),{ types: ['geocode'] });
       if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
@@ -222,7 +222,7 @@
   });
 
   $(document).ready(function() {
-    
+
     $("#cari").click(function(){
 
       dest = $("#dest").val();
@@ -254,21 +254,20 @@
 
             var map = new google.maps.Map(document.getElementById("map-canvas"), myOptions);
 
-            
+
             var markerorigin = new google.maps.Marker({
                   position: new google.maps.LatLng(parseFloat(lat),parseFloat(lng)),
                   map: map,
                   title: "Origin",
-                  visible:false 
+                  visible:false
         });
 
-           
-            var request = {
-          origin: markerorigin.getPosition(), 
-            destination: dest, 
-            provideRouteAlternatives:true, 
-            travelMode: google.maps.TravelMode.DRIVING 
 
+            var request = {
+          origin: markerorigin.getPosition(),
+            destination: dest,
+            provideRouteAlternatives:true,
+            travelMode: google.maps.TravelMode.DRIVING
         };
 
 
@@ -277,11 +276,11 @@
               directionsDisplay.setDirections(response);
             }
           });
-        
+
           directionsDisplay.setMap(map);
           directionsDisplay.setPanel(document.getElementById('directions-panel'));
 
-          
+
           var trafficLayer = new google.maps.TrafficLayer();
           trafficLayer.setMap(map);
 

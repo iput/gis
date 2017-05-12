@@ -20,23 +20,6 @@
    		$this->load->view('attribute/adm_footer');
  		}
  	}
-  public function trackJalan()
-  {
-    $this->load->library('googlemaps');
-    $sAdd = $this->input->post('asal');
-    $dAddr = $this->input->post('tujuan');
-    $config['center']='-7.952574, 112.596266';
-    $config['zoom']='auto';
-    $config['directions']=TRUE;
-    $config['directionsStart']='$sAdd';
-    $config['directionsEnd']='$dAddr';
-    $config['directionsDivID']='directionDiv';
-    $this->googlemaps->initialize($config);
-    $data['map']=$this->googlemaps->create_map();
-    $this->load->view('attribute/adm_header');
-    $this->load->view('admin/track', $data);
-    $this->load->view('attribute/adm_footer');
-  }
  	public function add_jalan()
  	{
  		$this->load->view('attribute/adm_header');
@@ -61,10 +44,19 @@
 
  				$this->m_jalan->insertJalan('jalan', $datain);
 
- 				$this->session->set_flashdata('pesan_sukses','data berhasil ditambahkan');
+ 				$this->session->set_flashdata('sukses','data berhasil ditambahkan');
 
  				redirect('admin/c_jalan/index');
  			}
  		}
+
+    public function deleteJalan($id)
+    {
+      $data = $this->m_jalan->deleteJalan($id);
+      if ($data>=1) {
+        $this->session->set_flashdata('sukses','data berhasil dihapus');
+        redirect('admin/C_jalan');
+      }
+    }
 
  } ?>

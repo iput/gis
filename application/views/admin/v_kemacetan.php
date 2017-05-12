@@ -23,15 +23,25 @@
 						</thead>
 						<tbody>
 						<?php foreach ($macet as $rows): ?>
+							<?php $status = $rows['tingkat_kemacetan'];
+							$info;
+							if ($status=='normal') {
+								$info = '<span class="text text-success">Normal</span>';
+							}elseif ($status='medium') {
+								$info = '<span class="text text-warning">Medium</span>';
+							}elseif ($status=='hard') {
+								$info = '<span class="text text-danger">Macet</span>';
+							}
+							 ?>
 							<tr>
 								<td><?= $rows['id_kemacetan'];?></td>
 								<td><?= $rows['nama_jalan'];?></td>
 								<td><?= $rows['jam_kemacetan'];?></td>
-								<td><?= $rows['tingkat_kemacetan'];?></td>
+								<td><?= $info;?></td>
 								<td><?= $rows['titik_kemacetan'];?></td>
 								<td>
 									<a href="<?php echo base_url('admin/c_kemacetan/edit/'.$rows['id_kemacetan']) ?>" class="btn btn-info btn-flat"><span class="glyphicon glyphicon-pencil"></span></a>
-									<a href="<?php echo base_url('admin/c_kemacetan/delete/'.$rows['id_kemacetan']) ?>" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></a>
+									<a href="<?php echo base_url('admin/c_kemacetan/deleteMacet/'.$rows['id_kemacetan']) ?>" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span></a>
 								</td>
 							</tr>
 						<?php endforeach ?>

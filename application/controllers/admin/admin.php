@@ -19,7 +19,7 @@
  	public function index()
  	{
     if ($this->session->userdata('username')&&$this->session->userdata('email')) {
-      $data['map']=$this->jalan->get_coordinte();
+      $data['map']=$this->jalan->get_coordinate();
    		$this->load->view('attribute/adm_header');
    		$this->load->view('admin/blank', $data);
    		$this->load->view('attribute/adm_footer');

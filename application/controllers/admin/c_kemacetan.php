@@ -58,6 +58,13 @@
  				redirect('admin/c_kemacetan/add_kemacetan');
  			}
  		}
-
  	}
+  public function deleteMacet($id)
+  {
+    $result = $this->macet->deleteMacet($id);
+    if ($result>=1) {
+      $this->session->set_flashdata('sukses','data berhasil dihapus');
+      redirect('admin/c_kemacetan');
+    }
+  }
  } ?>

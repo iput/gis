@@ -1,10 +1,10 @@
 <?php defined('BASEPATH')OR exit('no direct script access allowed');
 /**
- * 
+ *
  */
  class M_macet extends CI_Model
  {
- 	
+
  	function __construct()
  	{
  		parent::__construct();
@@ -27,4 +27,14 @@
  		$dataIn = $this->db->insert('kemacetan', $data);
  		return $dataIn;
  	}
+  public function deleteMacet($id)
+  {
+    $this->db->where('id_kemacetan', $id);
+    $this->db->delete('kemacetan');
+    if ($this->db->affected_rows()>0) {
+      return true;
+    }else{
+      return false;
+    }
+  }
  } ?>

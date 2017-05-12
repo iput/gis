@@ -33,7 +33,7 @@
                     <td><?php echo $row['latitude'] ?></td>
                     <td>
                       <a href="#" class="btn btn-info btn-flat"><span class="fa fa-pencil"></span></a>
-                      <a href="javascript:;" class="btn btn-danger btn-flat"><span class="fa fa-remove"></span></a>
+                      <a href="<?php echo base_url('admin/c_jalan/deleteJalan/'.$row['id_jalan'])?>" class="btn btn-danger btn-flat" onclick="return confirm('apakah anda yakin akan menghapus data ini ?')"><span class="fa fa-remove"></span></a>
                     </td>
                 </tr>
                 <?php endforeach ?>
@@ -43,7 +43,7 @@
         </div>
         <!-- /.box-body -->
         <div class="box-footer">
-          
+
         </div>
         <!-- /.box-footer-->
       </div>

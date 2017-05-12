@@ -26,7 +26,7 @@
                 <dt>Diupdate&nbsp; <?php echo date('d F Y', strtotime($rows['waktu_input']))?></dt>
                 <dd>Penulis</dd>
                 <dt><?php echo $rows['id_user']; ?></dt>
-                <dd><?php echo $rows['isi_berita']; ?></dd>
+                <dd class="text text-justify"><?php echo $rows['isi_berita']; ?></dd>
               </dl>
             </div>
             <!-- /.box-body -->
