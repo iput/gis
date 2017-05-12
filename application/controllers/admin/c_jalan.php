@@ -40,7 +40,7 @@
  					"nama_jalan"=>$this->input->post('txtNamaJalan'),
  					"longitude"=>$this->input->post('txtLong'),
  					"latitude"=> $this->input->post('txtLat'),
- 					"foto_jalan"=> "demo");
+ 					"kondisi_jalan"=> "demo");
 
  				$this->m_jalan->insertJalan('jalan', $datain);
 
