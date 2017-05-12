@@ -9,7 +9,7 @@
 		<div class="form-group">
 			<label class ="control-label col-md-3">Nama Jalan</label>
 			<div class="col-md-8">
-				<select class="form-control" name="cb_nama_jalan">
+				<select class="form-control" name="editnm_jalan">
 					<option value="">Pilih Jalan titik kemacetan</option>
 					<?php foreach ($jalan as $data): ?>
 						<option value="<?=$data['id_jalan']?>"><?=$data['id_jalan']?></option>
@@ -20,7 +20,7 @@
 		<div class="form-group">
 			<label class="control-label col-md-3">Cara Tempuh</label>
 			<div class="col-md-8">
-				<select class="form-control" name="cb_metode">
+				<select class="form-control" name="edit_metode">
 					<option value="">Pilih metode tempuh altenatif</option>
 					<option value="1">Jalan Kaki</option>
 					<option value="2">bersepeda</option>
@@ -32,19 +32,19 @@
 		<div class="form-group">
 			<label class="control-label col-md-3">Nama Alternatif</label>
 			<div class="col-md-8">
-				<input type="text" name="txtAlter" class="form-control" id="nama_alter" onchange="getAlamat()" value="<?= $lokasi_jalan?>">
+				<input type="text" name="edit_txtAlter" class="form-control" id="nama_alter" onchange="getAlamat()" value="<?= $lokasi_jalan?>">
 			</div>
 		</div>
 		<div class="form-group">
 		<label class="control-label col-md-3"> Longitude</label>
 		<div class="col-md-8">
-			<input type="text" name="txtLong" class="form-control" placeholder="Longitude" id="long" readonly value="<?=$long?>">
+			<input type="text" name="edit_txtLong" class="form-control" placeholder="Longitude" id="long" readonly value="<?=$long?>">
 		</div>
 		</div>
 		<div class="form-group">
 		<label class="control-label col-md-3">Latitude</label>
 		<div class="col-md-8">
-			<input type="text" name="txtLat" class="form-control" placeholder="Latitude" id="lat" readonly value="<?=$lat?>">
+			<input type="text" name="edit_txtLat" class="form-control" placeholder="Latitude" id="lat" readonly value="<?=$lat?>">
 		</div>
 		</div>
 		<div class="form-group">

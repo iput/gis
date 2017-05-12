@@ -59,4 +59,33 @@
       }
     }
 
+    public function editJalan()
+    {
+      $id = $this->input->post('idJalan');
+      $datain = $this->m_jalan->setJalan($id);
+      $edit = array(
+        "id_jalan"=>$datain[0]['id_jalan'],
+        "kondisi"=>$datain[0]['kondisi_jalan'],
+        "nama_jalan"=>$datain[0]['nama_jalan'],
+        "longitude"=>$datain[0]['longitude'],
+        "latitude"=>$datain[0]['latitude']);
+        $this->load->view('attribute/adm_header');
+        $this->load->view('admin/edit_jalan', $edit);
+        $this->load->view('attribute/adm_footer');
+    }
+    public function update_jalan()
+    {
+      $id = $this->input->post('idJalan');
+      $dataUpdate = array(
+        "nama_jalan"=>$this->input->post('edit_txtNamaJalan'),
+        "longitude"=>$this->input->post('edit_txtLong'),
+        "latitude"=>$this->input->post('edit_txtLat'),
+        "kondisi_jalan"=>$this->input->post('kondisijalan'));
+        $result = $this->m_jalan->update_jalan($dataUpdate, $id);
+        if ($result) {
+          $this->session->set_flashdata('sukses','data berhasil di update');
+          redirect('admin/c_jalan');
+        }
+    }
+
  } ?>

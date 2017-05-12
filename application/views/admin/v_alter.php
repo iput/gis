@@ -17,6 +17,7 @@
 						<td>Nama Jalan</td>
 						<td>Longitude</td>
 						<td>Latitude</td>
+						<td>Cara Tempuh</td>
 						<td>Alternatif tujuan</td>
 						<td>Aksi</td>
 					</tr>
@@ -40,6 +41,7 @@
 							<td><?php echo $data['long'];?></td>
 							<td><?php echo $data['lat'];?></td>
 							<td><?php echo $nama;?></td>
+							<td><?php echo $data['lokasi_jalan']?></td>
 							<td>
 								<input type="hidden" name="id_alter" value="<?php echo $data['id_alter']?>">
 								<a href="<?php echo base_url('admin/C_alter/editalter/'.$data['id_alter'])?>" class="btn btn-info btn-flat"><span class="glyphicon glyphicon-pencil"></span></a>

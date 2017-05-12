@@ -1,9 +1,9 @@
 
 <footer class="main-footer">
     <div class="pull-right hidden-xs">
-      <b>Version</b> 2.3.6
+      <b>Version</b> 1.2.3
     </div>
-    <strong>Copyright &copy; 2014-2016 <a href="http://almsaeedstudio.com">GM -Studio</a>.</strong> All rights
+    <strong>Dikembangkan &copy; 2014-2016 <a href="#">Rayyan -Studio</a>.</strong> All rights
     reserved.
   </footer>
   <!-- Add the sidebar's background. This div must be placed

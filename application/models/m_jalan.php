@@ -28,6 +28,7 @@
     $this->db->join('kemacetan','jalan.id_jalan=kemacetan.id_jalan');
     $query = $this->db->get();
     return $query->result_array();
+    unset($query);
   }
 
   public function deleteJalan($id)
@@ -39,6 +40,27 @@
     }else{
       return FALSE;
     }
+  }
+  public function setJalan($id)
+  {
+    $data = $this->db->query("SELECT * FROM jalan where id_jalan", $id);
+    if ($data) {
+      return $data->result_array();
+    }else {
+      return false;
+    }
+    unset($data);
+  }
+  public function update_jalan($data, $id)
+  {
+    $this->db->where('id_jalan', $id);
+    $this->db->update('jalan', $data);
+    if ($this->db->affected_rows()>0) {
+      return true;
+    }else{
+      return false;
+    }
+    unset($data);
   }
 
   public function add_alter($data)

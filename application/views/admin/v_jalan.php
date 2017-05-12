@@ -32,7 +32,8 @@
                     <td><?php echo $row['longitude'] ?></td>
                     <td><?php echo $row['latitude'] ?></td>
                     <td>
-                      <a href="#" class="btn btn-info btn-flat"><span class="fa fa-pencil"></span></a>
+                      <input type="hidden" name="idJalan" value="<?php echo $row['id_jalan']?>">
+                      <a href="<?php echo base_url('admin/c_jalan/editJalan/'.$row['id_jalan'])?>" class="btn btn-info btn-flat"><span class="fa fa-pencil"></span></a>
                       <a href="<?php echo base_url('admin/c_jalan/deleteJalan/'.$row['id_jalan'])?>" class="btn btn-danger btn-flat" onclick="return confirm('apakah anda yakin akan menghapus data ini ?')"><span class="fa fa-remove"></span></a>
                     </td>
                 </tr>
@@ -54,7 +55,7 @@
   </div>
   <!-- /.content-wrapper -->
 <script type="text/javascript">
-    <?php if ($this->session->flashdata('pesan_sukses')): ?>
-    $('.alert-success').html('<?php echo $this->session->flashdata('pesan_sukses') ?>').fadeIn().delay(4000).fadeOut('slow');
+    <?php if ($this->session->flashdata('sukses')): ?>
+    $('.alert-success').html('<?php echo $this->session->flashdata('sukses') ?>').fadeIn().delay(4000).fadeOut('slow');
   <?php endif ?>
 </script>

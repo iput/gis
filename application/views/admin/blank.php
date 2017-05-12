@@ -80,7 +80,7 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-    <script >
+    <!-- <script >
     function myMap() {
     var myCenter = new google.maps.LatLng(-7.950884, 112.608102);
     var mapProp = {center:myCenter,
@@ -92,10 +92,10 @@
     var marker = new google.maps.Marker({position:myCenter});
     marker.setMap(map);
     }
-    </script>
+    </script> -->
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJ1XPieE32_RzapVtgPa8KXDU9qeilbTE&callback=myMap"></script>
-<!-- <script type="text/javascript">
+<script src="http://maps.google.com/maps/api/js?key=AIzaSyAJ1XPieE32_RzapVtgPa8KXDU9qeilbTE"></script>
+<script type="text/javascript">
   var map;
   var infowindow;
   var ikon;
@@ -104,7 +104,7 @@
     map = new google.maps.Map(mapDiv,{
       center : new google.maps.LatLng(lat,lng),
       zoom : 13,
-      mapTypeId : google.maps/mapTypeId.ROADMAP
+      mapTypeId : google.maps.MapTypeId.ROADMAP
     });
     infowindow = new google.maps.InfoWindow();
     <?php foreach ($map as $row): ?>
@@ -112,25 +112,28 @@
     var lngview = '<?php echo $row['longitude']?>';
     var namaJalan = '<?php echo $row['nama_jalan']?>';
     var titik_macet = '<?php echo $row['titik_kemacetan']?>';
-    createMarker(latview,lngview,namaJalan,titik_macet);
+    var foto = '<?php echo base_url('upload/red.png')?>';
+    createMarker(latview,lngview,foto,namaJalan,titik_macet);
     <?php endforeach; ?>
   }
 
-  function createMarker(lt, lng, namajalan,titik) {
-    var image = 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png';
-    var latlng = new google.maps.LatLng(lt,lg);
+  function createMarker(lt, lng,foto, namajalan,titik) {
+    // var foto = '<?php echo base_url('upload/icon.png')?>';
+    var latlng = new google.maps.LatLng(lt,lng);
     var marker = new google.maps.Marker({
       position : latlng,
       map : map,
-      icon : image
+      icon : foto
     });
     google.maps.event.addListener(marker, 'click', function(){
       var myHtml = "<table>"+
-                    "<tr><td>"+namaJalan+"</td></tr>"+
-                    "<tr><td>"+titik+"</td></tr>"+
+                    "<tr><td> Titik Jalan : "+namajalan+"</td></tr>"+
+                    "<tr><td> Titik Tujuan : "+titik+"</td></tr>"+
+                    "<tr><td> Titik latitude : "+lt+"</td></tr>"+
+                    "<tr><td> Titik Longitude : "+lng+"</td></tr>"+
                     "</table>";
                     infowindow.setContent(myHtml);
                     infowindow.open(map,marker);
     });
   }
-</script> -->
+</script>

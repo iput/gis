@@ -76,11 +76,11 @@ public function updatealter()
 {
   $id = $this->input->post('id_alter');
   $data_in = array(
-    "lokasi_jalan"=>$this->input->post('txtAlter'),
-    "lat"=>$this->input->post('txtLat'),
-    "long"=>$this->input->post('txtLong'),
-    "alter_tempuh"=>$this->input->post('cb_metode'),
-    "id_jalan"=>$this->input->post('cb_nama_jalan'));
+    "lokasi_jalan"=>$this->input->post('edit_txtAlter'),
+    "lat"=>$this->input->post('edit_txtLat'),
+    "long"=>$this->input->post('edit_txtLong'),
+    "alter_tempuh"=>$this->input->post('edit_metode'),
+    "id_jalan"=>$this->input->post('editnm_jalan'));
     $result = $this->M_jalan->updatealter($data_in, $id);
     if ($result) {
       $this->session->set_flashdata('sukses','data berhasil ditambahkan');

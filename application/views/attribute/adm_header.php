@@ -42,7 +42,7 @@
    #peta { height: 300px; width: 100%; margin-top: 1px; background-color: green;}
  </style>
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini" onload="initialize(-7.950884, 112.608102)">
 <!-- Site wrapper -->
 <div class="wrapper">
 
