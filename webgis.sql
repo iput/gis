@@ -22,20 +22,19 @@ DROP TABLE IF EXISTS `alternatif`;
 
 CREATE TABLE `alternatif` (
   `id_alter` int(11) NOT NULL AUTO_INCREMENT,
-  `nama_jalan` varchar(100) DEFAULT NULL,
   `lokasi_jalan` text,
-  `lang` float DEFAULT NULL,
-  `lot` float DEFAULT NULL,
+  `long` float DEFAULT NULL,
+  `lat` float DEFAULT NULL,
   `alter_tempuh` varchar(100) DEFAULT NULL,
-  `waktu_alter` varchar(10) DEFAULT NULL,
-  `foto_alter` text,
   `id_jalan` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_alter`),
   KEY `alter` (`id_jalan`),
   CONSTRAINT `alter` FOREIGN KEY (`id_jalan`) REFERENCES `jalan` (`id_jalan`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 /*Data for the table `alternatif` */
+
+insert  into `alternatif`(`id_alter`,`lokasi_jalan`,`long`,`lat`,`alter_tempuh`,`id_jalan`) values (1,'surabaya',112.752,-7.25747,'1',1),(5,'batu',112.533,-7.88306,'2',2);
 
 /*Table structure for table `berita` */
 
@@ -67,13 +66,13 @@ CREATE TABLE `jalan` (
   `nama_jalan` varchar(200) DEFAULT NULL,
   `longitude` varchar(100) DEFAULT NULL,
   `latitude` varchar(100) DEFAULT NULL,
-  `foto_jalan` text,
+  `kondisi_jalan` text,
   PRIMARY KEY (`id_jalan`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
 /*Data for the table `jalan` */
 
-insert  into `jalan`(`id_jalan`,`nama_jalan`,`longitude`,`latitude`,`foto_jalan`) values (1,'Jl. Raya Candi V No.303, Karangbesuki, Sukun, Kota Malang, Jawa Timur 65151, Indonesia','112.597826','-7.955513000000001',NULL),(2,'Jl. Raya Candi VI C No.315, Karangbesuki, Sukun, Kota Malang, Jawa Timur 65149, Indonesia','112.5985563','-7.953169900000001',NULL),(3,'Jl. Raya Candi VI C No.315, Karangbesuki, Sukun, Kota Malang, Jawa Timur 65149, Indonesia','112.5985563','-7.953169900000001',NULL),(4,'Jl. Raya Candi VI C No.315, Karangbesuki, Sukun, Kota Malang, Jawa Timur 65149, Indonesia','112.5985563','-7.953169900000001',NULL),(5,'Jl. Sunan Kalijaga Dalam No.22, Dinoyo, Kec. Lowokwaru, Kota Malang, Jawa Timur 65149, Indonesia','112.6045695','-7.950148899999999',NULL);
+insert  into `jalan`(`id_jalan`,`nama_jalan`,`longitude`,`latitude`,`kondisi_jalan`) values (1,'Jl. Raya Candi V No.303, Karangbesuki, Sukun, Kota Malang, Jawa Timur 65151, Indonesia','112.5982832','-7.955409400000001','kondisi jalan tidak baik ketika sore hari'),(2,'Jl. Raya Candi VI C No.315, Karangbesuki, Sukun, Kota Malang, Jawa Timur 65149, Indonesia','112.5985563','-7.953169900000001',NULL),(3,'Jl. Raya Candi VI C No.315, Karangbesuki, Sukun, Kota Malang, Jawa Timur 65149, Indonesia','112.5985563','-7.953169900000001',NULL),(4,'Jl. Raya Candi VI C No.315, Karangbesuki, Sukun, Kota Malang, Jawa Timur 65149, Indonesia','112.5985563','-7.953169900000001',NULL);
 
 /*Table structure for table `kemacetan` */
 
@@ -90,7 +89,7 @@ CREATE TABLE `kemacetan` (
   PRIMARY KEY (`id_kemacetan`),
   KEY `kemacetan_jalan_fk` (`id_jalan`),
   CONSTRAINT `kemacetan_jalan_fk` FOREIGN KEY (`id_jalan`) REFERENCES `jalan` (`id_jalan`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 /*Data for the table `kemacetan` */
 

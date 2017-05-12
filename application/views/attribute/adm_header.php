@@ -151,7 +151,7 @@
           <ul class="treeview-menu">
             <li><a href="<?php echo base_url('admin/c_jalan') ?>" class="fa fa-circle-o">&nbsp;Jalan</a></li>
             <li><a href="<?php echo base_url('admin/c_kemacetan') ?>" class="fa fa-circle-o">&nbsp;Kemacetan</a></li>
-            <!-- <li><a href="<?php echo base_url('admin/c_alter') ?>" class="fa fa-circle-o">&nbsp;Alternatif</a></li> -->
+            <li><a href="<?php echo base_url('admin/c_alter') ?>" class="fa fa-circle-o">&nbsp;Alternatif</a></li>
           </ul>
         </li>
         <li>
