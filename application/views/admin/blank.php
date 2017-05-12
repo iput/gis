@@ -112,7 +112,7 @@
     var lngview = '<?php echo $row['longitude']?>';
     var namaJalan = '<?php echo $row['nama_jalan']?>';
     var titik_macet = '<?php echo $row['titik_kemacetan']?>';
-    var foto = '<?php echo base_url('upload/red.png')?>';
+    var foto = '<?php echo base_url('upload/src/markers/route.svg')?>';
     createMarker(latview,lngview,foto,namaJalan,titik_macet);
     <?php endforeach; ?>
   }
