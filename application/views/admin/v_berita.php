@@ -7,14 +7,23 @@
 		<div class="box-body">
 		<div class="alert alert-success" style="display: none;"></div>
 		<a href="<?php echo base_url('admin/c_berita/beritaBaru') ?>" class="btn btn-default btn-flat"><span class="glyphicon glyphicon-plus-sign"></span>&nbsp;Berita Baru</a>
-		<div class="row" style="margin-top: 10px;">
-		<?php foreach ($berita as $rows): ?>
-          <div class="col-md-12">
-          <div class="box box-success box-solid">
-						<input type="hidden" name="id_berita" value="<?= $rows['id_berita']?>">
-            <div class="box-header with-border">
-              <h3 class="box-title"><?php echo $rows['judul_berita'] ?><a href="<?php echo base_url('admin/c_berita/editBerita/'.$rows['id_berita'])?>">&nbsp;<span class="glyphicon glyphicon-pencil"></span></a></h3>
 
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <td>Konten</td>
+          <td>Aksi</td>
+        </tr>
+      </thead>
+      <tbody>
+        <?php foreach ($berita as $rows): ?>
+          <tr>
+          <td>
+          <div class="col-md-10">
+          <div class="box box-success box-solid">
+            <input type="hidden" name="id_berita" value="<?= $rows['id_berita']?>">
+            <div class="box-header with-border">
+              <h3 class="box-title"><?php echo $rows['judul_berita'] ?></h3>
               <div class="box-tools pull-right">
                 <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
               </div>
@@ -24,8 +33,10 @@
             <div class="box-body">
               <dl>
                 <dt>Diupdate&nbsp; <?php echo date('d F Y', strtotime($rows['waktu_input']))?></dt>
-                <dd>Penulis</dd>
-                <dt><?php echo $rows['id_user']; ?></dt>
+                <dd>Identitas Penulis</dd>
+                <dt><?php echo $rows['penulis']; ?></dt>
+                <dt><?php echo $rows['email'] ?></dt>
+                <dt><?php echo $rows['no_hp'] ?></dt>
                 <dd class="text text-justify"><?php echo $rows['isi_berita']; ?></dd>
               </dl>
             </div>
@@ -34,7 +45,15 @@
           <!-- /.box -->
         </div>
           <!-- /.box -->
-		<?php endforeach ?>
+          </td>
+          <td>
+            <a href="<?php echo base_url('admin/c_berita/editBerita/'.$rows['id_berita'])?>">&nbsp;<span class="glyphicon glyphicon-pencil"></span></a>
+          </td>
+          </tr>
+    <?php endforeach ?>
+      </tbody>
+    </table>
+		<div class="row" style="margin-top: 10px;">
 		</div>
 		</div>
 		<div class="box-footer">

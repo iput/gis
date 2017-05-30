@@ -47,15 +47,19 @@ CREATE TABLE `berita` (
   `foto_berita` text,
   `waktu_input` datetime DEFAULT NULL,
   `waktu_update` datetime DEFAULT NULL,
-  `id_user` int(11) DEFAULT NULL,
+  `penulis` varchar(100) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `no_hp` varchar(12) DEFAULT NULL,
+  `lokasi` varchar(100) DEFAULT NULL,
+  `lat` varchar(100) DEFAULT NULL,
+  `lng` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id_berita`),
-  KEY `user_fk` (`id_user`),
-  CONSTRAINT `user_fk` FOREIGN KEY (`id_user`) REFERENCES `tabel_user` (`id_user`)
+  KEY `user_fk` (`penulis`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 /*Data for the table `berita` */
 
-insert  into `berita`(`id_berita`,`judul_berita`,`isi_berita`,`foto_berita`,`waktu_input`,`waktu_update`,`id_user`) values (3,'Mahasiswa Tewas Disambar Truk di Turen, Seperti Ini Kejadiannya','Kecelakaan terjadi di jalan raya desa Kedok kecamatan Turen antara dump truk nopol N 9590 UZ dengan sepeda motor Honda Vario nopol S 2657 SH, Minggu (9/4/2017)\r\nAkibatnya pengendara sepeda motor, Felinda Asrofin Nikmah (22) mahasiswa salah satu Perguruan Tinggi di Kota Malang asal desa Tambakrejo kecamatan Jombang kabupaten Jombang meninggal dunia dalam perawatan di RS Bokor Keselamatan Turen.\r\nSedangkan Febri Ida Ramadhani (24) warga kelurahan Mare kecamatan Magersari kabupaten Mojokerto yang dibonceng korban mengalami luka-luka dan kini dirawat intensif RS Bokor Keselamatan Turen. Dan pengemudi truk, Slamet (42) warga Pronojiwo-Lumajang menjalani pemeriksaan Pos Laka Lantas Turen\r\nKanit Laka Polres Malang, Ipda Yoyok Supandi membenarkan terjadinya kecelakaan tersebut. Dan saat ini, kendaraan yang terlibat kecelakaan sudah diamankan untuk proses lebih lanjut.\r\n\"Untuk sopir truk saat ini sedang dilakukan pemeriksaan atas terjadinya kasus kecelakaan tersebut,\" kata Yoyok Supandi, Minggu (9/4/2017).\r\nDijelaskan Yoyok, kejadian kecelakaan itu terjadi ketika truk tanpa muatan melaju kencang di jalan raya desa Kedok dan berusaha mendahului truk lain dari arah Malang menuju ke Turen.\r\nSaat itu, dari arah berlawanan melaju sepeda motor Honda Vario yang dikendarai korban berboncengan dengan temannya.\r\nKarena jarak terlalu dekat dan truk terlalu kekanan sehingga benturan kecelakaan antara truk dan sepeda motor tidak bisa dihindarkan. Truk baru terhenti setelah menabrak pembatas jalan dan tiang telepon di jalan raya desa Kedok.\r\n\"Pengendara terluka dan terpental akibat benturan tersebut. Dan korban langsung diberikan pertolongan di dibawa ke RSBK Turen,\" tutur Yoyok.','surya malang','2017-05-05 00:00:00','2017-05-05 00:00:00',1);
+insert  into `berita`(`id_berita`,`judul_berita`,`isi_berita`,`foto_berita`,`waktu_input`,`waktu_update`,`penulis`,`email`,`no_hp`,`lokasi`,`lat`,`lng`) values (1,'orang hilang','ditemukan orang hilang dengan ciri tidak telihat kasat mata',NULL,NULL,NULL,'makhfud zamhari','makhfudzamhari@gmail.com',NULL,'jalan gajayana no 50 malang','-7.951536399999999','112.60846859999992'),(2,'pawai di karang besuki sebabkan macet','dalam rangka menyambut bulan ramadhan. kelurahan gasek mengadakan pawai bersih desa.namun hal tersebut mengakibatkan kemacetan parah pada ruas ruas jalan tertentu',NULL,'2017-05-28 00:00:00',NULL,'maulidah fithriyah','fithriyah.fm@gmail.com',NULL,'gasek karang besuki malang','-7.954104','112.59671700000001'),(3,'kecelakaan lalu lintas','terjadi kecelakaan beruntun',NULL,'2017-05-29 00:00:00',NULL,'maulidah fithriyah','fithriyah.fm@gmail.com',NULL,'jalan soekarno hatta Malang','-7.940746300000001','112.62199899999996');
 
 /*Table structure for table `jalan` */
 
@@ -68,7 +72,7 @@ CREATE TABLE `jalan` (
   `latitude` varchar(100) DEFAULT NULL,
   `kondisi_jalan` text,
   PRIMARY KEY (`id_jalan`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 /*Data for the table `jalan` */
 
@@ -89,7 +93,7 @@ CREATE TABLE `kemacetan` (
   PRIMARY KEY (`id_kemacetan`),
   KEY `kemacetan_jalan_fk` (`id_jalan`),
   CONSTRAINT `kemacetan_jalan_fk` FOREIGN KEY (`id_jalan`) REFERENCES `jalan` (`id_jalan`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 /*Data for the table `kemacetan` */
 

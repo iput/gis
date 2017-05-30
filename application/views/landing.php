@@ -27,7 +27,7 @@
 
 </head>
 
-<body id="page-top">
+<body id="page-top" onload="initialize(-7.950884, 112.608102)">
 
     <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
         <div class="container-fluid">
@@ -45,6 +45,7 @@
                     <li>
                         <a class="page-scroll" href="#about">Alternatif</a>
                     </li>
+                    <li><a href="#berita" class="page-scroll">Berita</a></li>
                     <li>
                         <a class="page-scroll" href="#services">Layanan</a>
                     </li>
@@ -52,7 +53,7 @@
                         <a class="page-scroll" href="#portfolio">Tentang Kami</a>
                     </li>
                     <li>
-                    <a href="#contact" class="page-scroll">Kritik & Saran</a>
+                    <a href="#contact" class="page-scroll">Laporkan</a>
                   </li>
                 </ul>
             </div>
@@ -71,6 +72,11 @@
             </div>
         </div>
     </header>
+
+    <section id="berita">
+        <h3 class="text-center">Informasi Lalu Lintas</h3>
+        <div id="map_info" style="width:100%; height:550px; background-color: blue;"></div>
+    </section>
 
     <section class="bg-primary" id="about">
       <h3 class="text-center">Temukan alternatif anda</h3>
@@ -146,28 +152,48 @@
                 <div class="col-lg-8 col-lg-offset-2 text-center">
                     <h2 class="section-heading"></h2>
                     <hr class="primary">
-                    <p></p>
                     <h2 class="section-heading">Ayo Ikut Berbagi</h2>
-                    <hr class="primary">
-                    <p>Sedikit Banyak saran yang anda masukan merupakan suatu hal istimewa bagi kami
-                      <br>TinggalKan saran Untuk Kami dalam rangka ikut mengembangkan sistem yang saat ini tengah kami tangani</p>
+                    <p>Bantu kami untuk memberikan informasi secara cepat kepada publik mengenai informasi seputar lalulintas</p>
                 </div>
-                <div class="col-lg-4 col-lg-offset-4">
-                    <form class="form-vertical" action="" method="post">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <form class="form-horizontal" action="<?php echo base_url('landing/laporanBaru') ?>" method="post">
                       <div class="form-group">
-                        <label>Nama anda</label>
-                        <input type="text" name="txtNama" value="" class="form-control" placeholder="nama anda">
+                        <label class="control-label col-md-3">Nama anda</label>
+                        <div class="col-md-8">
+                            <input type="text" name="txtNama" value="" class="form-control" placeholder="nama anda">
+                        </div>
                       </div>
                       <div class="form-group">
-                        <label>Email anda</label>
-                        <input type="email" name="txtEmail" value="" placeholder="Email anda" class="form-control">
+                          <label class="control-label col-md-3">Judul Berita</label>
+                          <div class="col-md-6">
+                              <input type="text" name="txtJudul" class="form-control">
+                          </div>
                       </div>
                       <div class="form-group">
-                        <label>Kritik & Saran</label>
-                        <textarea name="kritik" rows="8" cols="80" class="form-control"></textarea>
+                        <label class="control-label col-md-3">Email anda</label>
+                        <div class="col-md-8">
+                            <input type="email" name="txtEmail" value="" placeholder="Email anda" class="form-control">
+                        </div>
                       </div>
                       <div class="form-group">
-                        <button type="submit" class="btn btn-primary">Kirim Kritikan</button>
+                          <label class="control-label col-lg-3">Lokasi Berita</label>
+                          <div class="col-md-8">
+                              <input type="text" name="txtLokasi" class="form-control" placeholder="masukan lokasi kejadian" id="lokasi" onchange="getAlamat()">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                        <label class="control-label col-md-3">Konten Berita</label>
+                        <div class="col-md-8">
+                            <textarea name="kritik" rows="8" cols="80" class="form-control"></textarea>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                      <input type="hidden" name="txtLat" class="form-control" readonly id="lat">
+                      <input type="hidden" name="txtLong" class="form-control" readonly id="long">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-8">
+                            <button type="submit" class="btn btn-info">Kirim Berita</button>
+                        </div>
                       </div>
                     </form>
                 </div>
@@ -288,6 +314,69 @@
     });
   });
     </script>
+
+    <script type="text/javascript">
+        function getAlamat() {
+            var geocoder = new google.maps.Geocoder();
+            var address = document.getElementById('lokasi').value;
+            geocoder.geocode({
+                'address' : address
+            },
+            function(result, status){
+                if (status==google.maps.GeocoderStatus.OK) {
+                    $('#lat').val(result[0].geometry.location.lat());
+                    $('#long').val(result[0].geometry.location.lng());
+                }else{
+                    alert('terjadi kesalahan'+status);
+                }
+            });
+        }
+    </script>
+
+    <script type="text/javascript">
+  var map;
+  var infowindow;
+  var ikon;
+  function initialize(lat, lng){
+    var mapDiv = document.getElementById('map_info');
+    map = new google.maps.Map(mapDiv,{
+      center : new google.maps.LatLng(lat,lng),
+      zoom : 13,
+      mapTypeId : google.maps.MapTypeId.ROADMAP
+    });
+    infowindow = new google.maps.InfoWindow();
+    <?php foreach ($berita as $row): ?>
+    var lokasi = '<?php echo $row['lokasi']?>';
+    var latview = '<?php echo $row['lat']?>';
+    var lngview = '<?php echo $row['lng']?>';
+    var judulBerita = '<?php echo $row['judul_berita']?>';
+    var isi_berita = '<?php echo $row['isi_berita']?>';
+    var penulis = '<?php echo $row['penulis']?>';
+    var foto = '<?php echo base_url('upload/icon.png')?>';
+    createMarker(latview,lngview,lokasi,judulBerita,isi_berita,penulis,foto);
+    <?php endforeach; ?>
+  }
+
+  function createMarker(lt, lng,lokasi,judul,isi_berita,penulis,foto) {
+    // var foto = '<?php echo base_url('upload/icon.png')?>';
+    var latlng = new google.maps.LatLng(lt,lng);
+    var marker = new google.maps.Marker({
+      position : latlng,
+      map : map,
+      icon : foto
+    });
+    google.maps.event.addListener(marker, 'click', function(){
+      var myHtml = "<table>"+
+                    "<tr><td> <strong>Penulis</strong>&emsp;:&emsp;"+penulis+"</td></tr>"+
+                    "<tr><td> <strong>Topik</strong>&emsp;&emsp;:&emsp;"+judul+"</td></tr>"+
+                    "<tr><td> <strong>Lokasi</strong>&emsp;:&emsp;"+lokasi+"</td></tr>"+
+                    "<tr><td> <strong>Isi</strong>&emsp;&emsp;&emsp;:&emsp;"+isi_berita+"</td></tr>"+
+                    "</table>";
+                    infowindow.setContent(myHtml);
+                    infowindow.open(map,marker);
+    });
+  }
+</script>
 </body>
 
 </html>

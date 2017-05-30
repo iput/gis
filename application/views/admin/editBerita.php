@@ -14,6 +14,24 @@
 				 	</div>
 				 </div>
 				 <div class="form-group">
+				 	<label class="control-label col-md-2">Penulis</label>
+				 	<div class="col-md-8">
+				 		<input type="text" name="txtPenulis" class="form-control" value="<?= $penulis?>">
+				 	</div>
+				 </div>
+				 <div class="form-group">
+				 	<label class="control-label col-md-2">Email Anda</label>
+				 	<div class="col-md-8">
+				 		<input type="email" name="txtEmailUser" class="form-control" value="<?= $email?>">
+				 	</div>
+				 </div>
+				 <div class="form-group">
+				 	<label class="control-label col-md-2">Nomor HP </label>
+				 	<div class="col-md-8">
+				 		<input type="text" name="txtHP" class="form-control" value="<?= $no_hp?>">
+				 	</div>
+				 </div>
+				 <div class="form-group">
 				 	<label class="control-label col-md-2">Sumber Berita</label>
 				 	<div class="col-md-8">
 				 		<input type="text" name="txtSumber" class="form-control" placeholder="sumber berita" value="<?= $foto_berita;?>">

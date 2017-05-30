@@ -18,7 +18,7 @@
 
   public function setBerita($id)
   {
-    $data = $this->db->query("select * from berita where id_berita",$id);
+    $data = $this->db->query("SELECT * FROM berita WHERE id_berita ",$id);
     return $data->result_array();
   }
 

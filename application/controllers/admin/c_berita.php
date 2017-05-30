@@ -49,7 +49,9 @@
  				"foto_berita"=>$this->input->post('txtSumber'),
  				"waktu_input"=> date('Y:m:d'),
  				"waktu_update"=>date('h:m:s'),
- 				"id_user"=>$this->input->post('iduser'));
+ 				"penulis"=>$this->input->post('txtPenulis'),
+        "email"=>$this->input->post('txtEmailUser'),
+        "no_hp"=>$this->input->post('txtHP'));
  			$result = $this->m_berita->insertBerita($dataBerita);
  			if ($result) {
  				$this->session->set_flashdata('sukses','Data Berita Berhasil ditambahkan');
@@ -58,16 +60,17 @@
  		}
  	}
 
- 	public function editBerita()
+ 	public function editBerita($id)
  	{
- 		$id = $this->input->post('id_berita');
     $data = $this->m_berita->setBerita($id);
     $dataEdit = array(
       "id_berita"=>$data[0]['id_berita'],
       "judul_berita"=>$data[0]['judul_berita'],
       "foto_berita"=>$data[0]['foto_berita'],
       "isi_berita"=>$data[0]['isi_berita'],
-      "id_user"=>$data[0]['id_user']);
+      "penulis"=>$data[0]['penulis'],
+      "email"=>$data[0]['email'],
+      "no_hp"=>$data[0]['no_hp']);
       $this->load->view('attribute/adm_header');
       $this->load->view('admin/editBerita', $dataEdit);
       $this->load->view('attribute/adm_footer');
@@ -81,9 +84,12 @@
       "isi_berita"=>$this->input->post("txtKonten"),
       "foto_berita"=>$this->input->post("txtSumber"),
       "waktu_update"=>date('Y:m:d'),
-      "id_user"=>'1');
+      "penulis"=>$this->input->post('txtPenulis'),
+      "email"=>$this->input->post('txtEmailUser'),
+      "no_hp"=>$this->input->post('txtHP'));
       $update = $this->m_berita->updateBerita($dataUdate, $id_berita);
       if ($update>=0) {
+        $this->session->set_flashdata('sukses','Data Berhasil diperbarui');
         redirect('admin/c_berita');
       }
   }
